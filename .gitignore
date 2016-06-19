@@ -1,0 +1,10 @@
+
+vim/.vim/autoload*
+vim/.vim/plugged*
+vim/.vim/plugged/airline
+
+*~
+*.swo 
+*.swp
+
+vim/.vim/.netrwhist

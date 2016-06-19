@@ -1,0 +1,201 @@
+snippet \eq  " latex equation" i
+\f[
+    ${VISUAL}$0
+\f]
+endsnippet
+
+snippet \eqar "latex array  equation" i
+\f[
+\begin{array}{$1}
+	${VISUAL}$0
+\end{array}
+\f]
+endsnippet
+
+snippet \mat "latex matrix" i
+\begin{bmatrix}
+	$0
+\end{bmatrix}
+endsnippet
+
+snippet \eqin "latex inline equation" i
+\f$ ${VISUAL}$1 \f$ $0
+endsnippet
+
+snippet \brack "latex bracket" i
+\left$1 ${VISUAL}$3 \right$2 $0
+endsnippet
+
+snippet _ "latex subscript" i
+_{${VISUAL}$1}$0
+endsnippet
+
+snippet ^ "latex superscript" i
+^{${VISUAL}$1}$0
+endsnippet
+
+snippet \en "equation number" i
+\qquad (7.$1) $0
+endsnippet
+
+snippet \small "latex \small" i
+\latexonly \small \endlatexonly $0
+endsnippet
+
+snippet \D "latex Delta" i
+\Delta$0
+endsnippet
+
+snippet \o "latex omega" i
+\omega$0
+endsnippet
+
+snippet \l "latex lambda" i
+\lambda$0
+endsnippet
+
+snippet \th "latex theta" i
+\theta$0
+endsnippet
+
+snippet \disp "latex displaystyle" i
+\displaystyle $0
+endsnippet
+
+snippet \int "Latex integral" i
+\int_{$1}^{$2}\!{$4}\textrm{d}{$3} $0
+endsnippet
+
+snippet \sum "Latex sum" i
+\sum_{$1}^{$2}\, $3 $0
+endsnippet
+
+snippet \f "latex fraction" i
+\frac{${VISUAL}$1}{$2} $0
+endsnippet
+
+snippet \it "latex \textit{}" i
+\textit{${VISUAL}$1} $0
+endsnippet
+
+snippet \bo "latex boldsymbol" i
+\boldsymbol{${VISUAL}$1}$0
+endsnippet
+
+snippet \t "latex \textrm{}"	i
+\textrm{${VISUAL}$1} $0
+endsnippet
+
+snippet \m "latex \mathrm{}" i
+\mathrm{${VISUAL}$1} $0
+endsnippet
+
+snippet \b "latex begin block" i
+\begin{$1}
+${VISUAL}$2
+\end{$1}
+$0
+endsnippet
+
+snippet \latex "latex environment" i
+\latexonly ${VISUAL}$1 \endlatexonly  $0
+endsnippet
+
+snippet \a "anchor" i
+\anchor $0
+endsnippet
+
+snippet \ref "reference" i
+[$1](@ref $2) $0
+endsnippet
+
+snippet \tabl "latex table" i
+\latexonly
+\begin{table}[H]
+	\begin{tabular}{p{1.2cm}p{14cm}}
+	$ $1 $ & $2 \tabularnewline \tabularnewline
+	$ $3 $ & $4 \tabularnewline \tabularnewline
+	$5
+	\end{tabular}
+	\end{table}
+\endlatexonly
+$0
+endsnippet
+
+snippet \tablinel "latex table line" i
+$ $1 $ & $2 \tabularnewline \tabularnewline $0
+endsnippet
+
+snippet \tabh "html table" i
+\htmlonly
+<table width="800">
+	<tr> <td align="left" width = "9%">\( $1 \) </td><td align="left">$2</td></tr>
+	<tr> <td align="left">\( $3 \) </td><td align="left">$4 </td></tr>
+</table>
+\endhtmlonly
+endsnippet
+
+snippet \tablineh "html table line" i
+<tr> <td align="left" width = "9%">\( $1 \) </td><td align="left">$2
+</td></tr>
+endsnippet
+
+snippet \tabhl "Latex and html table" i
+
+\htmlonly
+<table width="800">
+	<tr> <td align="left" width = "9%">\( $1 \) </td><td align="left">$2</td></tr>
+	<tr> <td align="left">\( $3 \) </td><td align="left">$4 </td></tr>
+	<tr> <td align="left">\( $5 \) </td><td align="left">$6 </td></tr>
+	<tr> <td align="left">\( $7 \) </td><td align="left">$8 </td></tr>
+	<tr> <td align="left">\( $9 \) </td><td align="left">$10 </td></tr>
+	<tr> <td align="left">\( $11 \) </td><td align="left">$12 </td></tr>
+	<tr> <td align="left">\( $13 \) </td><td align="left">$14 </td></tr>
+	<tr> <td align="left">\( $15 \) </td><td align="left">$16 </td></tr>
+	<tr> <td align="left">\( $17 \) </td><td align="left">$18 </td></tr>
+	<tr> <td align="left">\( $19 \) </td><td align="left">$20 </td></tr>
+	<tr> <td align="left">\( $21 \) </td><td align="left">$22 </td></tr>
+	<tr> <td align="left">\( $23 \) </td><td align="left">$24 </td></tr>
+	<tr> <td align="left">\( $25 \) </td><td align="left">$26 </td></tr>
+	<tr> <td align="left">\( $27 \) </td><td align="left">$28 </td></tr>
+	<tr> <td align="left">\( $29 \) </td><td align="left">$30 </td></tr>
+	<tr> <td align="left">\( $31 \) </td><td align="left">$32 </td></tr>
+	<tr> <td align="left">\( $33 \) </td><td align="left">$34 </td></tr>
+	<tr> <td align="left">\( $35 \) </td><td align="left">$36 </td></tr>
+	<tr> <td align="left">\( $37 \) </td><td align="left">$38 </td></tr>
+	<tr> <td align="left">\( $39 \) </td><td align="left">$40 </td></tr>
+	$41
+</table>
+\endhtmlonly
+
+\latexonly
+\begin{table}[H]
+	\begin{tabular}{p{1.2cm}p{14cm}}
+	$ $1 $ & $2 \tabularnewline \tabularnewline
+	$ $3 $ & $4 \tabularnewline \tabularnewline
+	$ $5 $ & $6 \tabularnewline \tabularnewline
+	$ $7 $ & $8 \tabularnewline \tabularnewline
+	$ $9 $ & $10 \tabularnewline \tabularnewline
+	$ $11 $ & $12 \tabularnewline \tabularnewline
+	$ $13 $ & $14 \tabularnewline \tabularnewline
+	$ $15 $ & $16 \tabularnewline \tabularnewline
+	$ $17 $ & $18 \tabularnewline \tabularnewline
+	$ $19 $ & $20 \tabularnewline \tabularnewline
+	$ $21 $ & $22 \tabularnewline \tabularnewline
+	$ $23 $ & $24 \tabularnewline \tabularnewline
+	$ $25 $ & $26 \tabularnewline \tabularnewline
+	$ $27 $ & $28 \tabularnewline \tabularnewline
+	$ $29 $ & $30 \tabularnewline \tabularnewline
+	$ $31 $ & $32 \tabularnewline \tabularnewline
+	$ $33 $ & $34 \tabularnewline \tabularnewline
+	$ $35 $ & $36 \tabularnewline \tabularnewline
+	$ $37 $ & $38 \tabularnewline \tabularnewline
+	$ $39 $ & $40 \tabularnewline \tabularnewline
+	$41
+	\end{tabular}
+	\end{table}
+\endlatexonly
+$0
+
+endsnippet
+
