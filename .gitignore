@@ -1,7 +1,8 @@
 
 vim/.vim/autoload*
 vim/.vim/plugged*
-vim/.vim/plugged/airline
+nvim/autoload*
+nvim/plugged*
 
 *~
 *.swo 
