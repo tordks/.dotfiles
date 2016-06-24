@@ -1,6 +1,5 @@
 
 "TODO: Go thorugh plugins and set settings
-"TODO: Add ifdef if using vim or neovim for plugins etc.
 
 """"""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -202,33 +201,15 @@ nnoremap <leader>s :mksession<CR>
 " open ag.vim
 nnoremap <leader>a :Ag
 " Sets <left> and <right> to switch between buffers
-
 " TODO: Change this map?
-"nnoremap <A-h> :w\|:bp<cr> 
-"nnoremap <A-l> :w\|:bn<cr>
-nnoremap <A-h> :bp<cr> 
-nnoremap <A-l> :bn<cr>
+nnoremap <left> :w\|:bp<cr> 
+nnoremap <right> :w\|:bn<cr>
 
 "Move between splits with ctr-j instead of ctrl-w and then j
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" terminal emulator esc
-tnoremap <Esc> <C-\><C-n>
-
-" Move between windows in terminal window for neovim
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
-
-" Open terminal in new split window and start in indsert mode
-nnoremap <leader>n  :20sp <cr> <C-W>r :terminal <cr>
-
-" Open terminal in new split window and start in insert mode and run make
-nnoremap <leader>m  :10sp <cr> <C-W>r :terminal <cr> make <cr>
 
 " move to beginning/end of line
 nnoremap B ^
