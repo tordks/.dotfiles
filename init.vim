@@ -72,7 +72,7 @@ Plug 'sjl/gundo.vim'
 Plug 'ggreer/the_silver_searcher' 
 
 "Fuzzy file, buffer, mru, tag, etc finder
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Easymotion
 Plug 'easymotion/vim-easymotion'
