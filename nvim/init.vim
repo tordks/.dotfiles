@@ -1,6 +1,10 @@
 
 "TODO: Go thorugh plugins and set settings
 "TODO: Add ifdef if using vim or neovim for plugins etc.
+"TODO: Add plugins from vimawesome
+"       * Gitgutter
+"       * Table mode
+"       * Indent guides
 
 """"""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -69,16 +73,15 @@ Plug 'sjl/gundo.vim'
 " Movement "
 """"""""""""
 
-"A code-searching tool similar to ack, but faster.
-Plug 'ggreer/the_silver_searcher' 
-
 "Fuzzy file, buffer, mru, tag, etc finder
 Plug 'kien/ctrlp.vim'
 
 " Easymotion
+"TODO: Learn this properly
 Plug 'easymotion/vim-easymotion'
 
 " Multiple cursors
+"TODO: Learn this properly
 Plug 'terryma/vim-multiple-cursors'
 
 """"""""""
@@ -110,7 +113,7 @@ Plug 'plasticboy/vim-markdown'
 """""""""
 
 " MPI syntax highlighting
-" Plug 'jiangxincode/mpi.vim'
+Plug 'jiangxincode/mpi.vim'
 
 """""""""
 " Misc. "
@@ -177,6 +180,10 @@ nnoremap <C-c> :bp\|bd # <cr>
 inoremap kj <esc>l
 vnoremap kj <esc>
 
+" terminal emulator esc
+tnoremap <Esc> <C-\><C-n>
+tnoremap kj <C-\><C-n>
+
 " Align lines w.r.t. character inserted
 vnoremap <leader>t :Tabularize /
 
@@ -215,8 +222,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" terminal emulator esc
-tnoremap <Esc> <C-\><C-n>
 
 " Move between windows in terminal window for neovim
 tnoremap <C-h> <C-\><C-n><C-w>h
@@ -228,7 +233,8 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 nnoremap <leader>n  :20sp <cr> <C-W>r :terminal <cr>
 
 " Open terminal in new split window and start in insert mode and run make
-nnoremap <leader>m  :10sp <cr> <C-W>r :terminal <cr> make <cr>
+nnoremap <leader>m  :20sp <cr> <C-W>r :terminal <cr> make <cr>
+nnoremap <leader>gs  :20sp <cr> <C-W>r :terminal <cr> git status <cr>
 
 " move to beginning/end of line
 nnoremap B ^
@@ -282,10 +288,10 @@ set nocompatible
 set background=dark
 set laststatus=2            " always displaying status line
 set nu                      " display line numbers
-set tabstop=2               " number of visual spaces per TAB
-set shiftwidth=2            " size of an indent
+set tabstop=4               " number of visual spaces per TAB
+set shiftwidth=4            " size of an indent
 set expandtab               " smart expansion of tabs into spaces
-set softtabstop=2           " number of spaces in tab when editing.
+set softtabstop=4           " number of spaces in tab when editing.
 set smarttab
 set wildmenu                " visual autocomplete for command menu
 set nohlsearch              " removes highlight search
