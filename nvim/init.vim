@@ -52,6 +52,9 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " A tree explorer plugin
 Plug 'scrooloose/nerdtree'
 
+" Python autocomplete
+Plug 'davidhalter/jedi-vim'
+
 
 """"""""""""""""""
 " Organizational "
@@ -176,13 +179,13 @@ nnoremap <leader>; A;<esc>
 " Delete buffer from split"
 nnoremap <C-c> :bp\|bd # <cr>
 
-" kj is escape and don't move back one character
-inoremap kj <esc>l
-vnoremap kj <esc>
+" jk is escape and don't move back one character
+inoremap jk <esc>l
+vnoremap jk <esc>
 
 " terminal emulator esc
 tnoremap <Esc> <C-\><C-n>
-tnoremap kj <C-\><C-n>
+tnoremap jk <C-\><C-n>
 
 " Align lines w.r.t. character inserted
 vnoremap <leader>t :Tabularize /
