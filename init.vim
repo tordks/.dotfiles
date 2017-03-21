@@ -1,5 +1,10 @@
 
 "TODO: Go thorugh plugins and set settings
+"TODO: Add ifdef if using vim or neovim for plugins etc.
+"TODO: Add plugins from vimawesome
+"       * Gitgutter
+"       * Table mode
+"       * Indent guides
 
 """"""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -47,6 +52,9 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " A tree explorer plugin
 Plug 'scrooloose/nerdtree'
 
+" Python autocomplete
+Plug 'davidhalter/jedi-vim'
+
 
 """"""""""""""""""
 " Organizational "
@@ -64,20 +72,22 @@ Plug 'bling/vim-airline'
 " Graph of undos
 Plug 'sjl/gundo.vim'
 
+" Saving vim sessions
+Plug 'tpope/vim-obsession'
+
 """"""""""""
 " Movement "
 """"""""""""
 
-"A code-searching tool similar to ack, but faster.
-Plug 'ggreer/the_silver_searcher' 
-
 "Fuzzy file, buffer, mru, tag, etc finder
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
 " Easymotion
+"TODO: Learn this properly
 Plug 'easymotion/vim-easymotion'
 
 " Multiple cursors
+"TODO: Learn this properly
 Plug 'terryma/vim-multiple-cursors'
 
 """"""""""
@@ -109,7 +119,7 @@ Plug 'plasticboy/vim-markdown'
 """""""""
 
 " MPI syntax highlighting
-" Plug 'jiangxincode/mpi.vim'
+Plug 'jiangxincode/mpi.vim'
 
 """""""""
 " Misc. "
@@ -172,9 +182,13 @@ nnoremap <leader>; A;<esc>
 " Delete buffer from split"
 nnoremap <C-c> :bp\|bd # <cr>
 
-" kj is escape and don't move back one character
-inoremap kj <esc>l
-vnoremap kj <esc>
+" jk is escape and don't move back one character
+inoremap jk <esc>l
+vnoremap jk <esc>
+
+" terminal emulator esc
+tnoremap <Esc> <C-\><C-n>
+tnoremap jk <C-\><C-n>
 
 " Align lines w.r.t. character inserted
 vnoremap <leader>t :Tabularize /
@@ -201,15 +215,32 @@ nnoremap <leader>s :mksession<CR>
 " open ag.vim
 nnoremap <leader>a :Ag
 " Sets <left> and <right> to switch between buffers
+
 " TODO: Change this map?
-nnoremap <left> :w\|:bp<cr> 
-nnoremap <right> :w\|:bn<cr>
+"nnoremap <A-h> :w\|:bp<cr> 
+"nnoremap <A-l> :w\|:bn<cr>
+nnoremap <A-h> :bp<cr> 
+nnoremap <A-l> :bn<cr>
 
 "Move between splits with ctr-j instead of ctrl-w and then j
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+
+" Move between windows in terminal window for neovim
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
+" Open terminal in new split window and start in indsert mode
+nnoremap <leader>n  :20sp <cr> <C-W>r :terminal <cr>
+
+" Open terminal in new split window and start in insert mode and run make
+nnoremap <leader>m  :20sp <cr> <C-W>r :terminal <cr> make <cr>
+nnoremap <leader>gs  :20sp <cr> <C-W>r :terminal <cr> git status <cr>
 
 " move to beginning/end of line
 nnoremap B ^
@@ -263,10 +294,10 @@ set nocompatible
 set background=dark
 set laststatus=2            " always displaying status line
 set nu                      " display line numbers
-set tabstop=2               " number of visual spaces per TAB
-set shiftwidth=2            " size of an indent
+set tabstop=4               " number of visual spaces per TAB
+set shiftwidth=4            " size of an indent
 set expandtab               " smart expansion of tabs into spaces
-set softtabstop=2           " number of spaces in tab when editing.
+set softtabstop=4           " number of spaces in tab when editing.
 set smarttab
 set wildmenu                " visual autocomplete for command menu
 set nohlsearch              " removes highlight search
