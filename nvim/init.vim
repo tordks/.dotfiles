@@ -72,6 +72,9 @@ Plug 'bling/vim-airline'
 " Graph of undos
 Plug 'sjl/gundo.vim'
 
+" Saving vim sessions
+Plug 'tpope/vim-obsession'
+
 """"""""""""
 " Movement "
 """"""""""""
