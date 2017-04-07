@@ -6,9 +6,187 @@ snippet \% "Header" i
 $0
 endsnippet
 
-snippet \b "Begin end" b
+##############
+# Structural #
+##############
+
+snippet \s "section" i
+\section{$1}
+$0
+endsnippet
+
+snippet \ss "subsection" i
+\subsection{$1}
+$0
+endsnippet
+
+
+snippet \sss "subsubsection" i
+\subsubsection{$1}
+$0
+endsnippet
+
+snippet \b "Begin end" i
 \begin{$1}
 $2
 \end{$1}
 $0
 endsnippet
+
+snippet \be "Begin equation" b
+\begin{equation}
+	$1
+\end{equation}
+$0
+endsnippet
+
+snippet \be* "Begin equation" b
+\begin{equation*}
+	$1
+\end{equation*}
+$0
+endsnippet
+
+snippet \ba "Aligned eq" b
+\begin{align}
+	$1
+\end{align}
+$0
+endsnippet
+
+snippet \ba* "Aligned eq" b
+\begin{align*}
+	$1
+\end{align*}
+$0
+endsnippet
+
+snippet \bf "Frame with frame title" b
+\begin{frame}
+	\frametitle{$1}
+	$0
+\end{frame}
+endsnippet
+
+snippet \bi "Itemize" i
+\begin{itemize}
+	\item $1
+\end{itemize}
+$0
+endsnippet
+
+snippet \ben "enumerate" i
+\begin{enumerate}
+	\item $1
+\end{enumerate}
+$0
+endsnippet
+
+snippet \i "item" i
+\item $0
+endsnippet
+
+snippet \fig "figure" i
+\begin{figure}[$1]
+    \captionsetup[subfigure]{justification=centering}
+	$4\centering
+	\includegraphics[$2]{$3}
+	\caption{$6}
+	\label{fig:$5}
+\end{figure}
+$0
+endsnippet
+
+snippet \subfig "subfigure" i
+\begin{figure}
+    \captionsetup[subfigure]{justification=centering}
+    \centering
+    \subcaptionbox{$1\label{$2}}
+    [$9\textwidth]{\includegraphics[scale=0.5]{fig/$3}}
+    \subcaptionbox{$4\label{$5}}
+    [$9\textwidth]{\includegraphics[scale=0.5]{fig/$6}}
+    \caption{$7}\label{$8}
+\end{figure}
+$0
+endsnippet
+
+snippet \asubfig "add a subfigure" b
+\subcaptionbox{$1\label{$2}}
+[$4\textwidth]{\includegraphics[scale=0.5]{fig/$3}}
+$0
+endsnippet
+
+snippet \bt "tabular" b
+\begin{center}
+	\begin{tabular}{ $1 } 
+		 \hline
+		 $2 
+		 \hline
+	\end{tabular}
+\end{center}
+$0
+endsnippet
+
+########
+# Text #
+########
+snippet \tc "textcolor" i
+\textcolor{$1}{$2}$0
+endsnippet
+
+snippet \c "comment" i
+\textcolor{comment}{$1}$0
+endsnippet
+
+snippet \no "noindent" i
+\noindent$0
+endsnippet
+
+
+##############
+# References #
+##############
+
+snippet \figref "Figure referemce" i
+\ref{fig:$1}$0
+endsnippet
+
+snippet \eqref "equation referemce" i
+\ref{eq:$1}$0
+endsnippet
+
+snippet \tabref "Table referemce" i
+\ref{tab:$1}$0
+endsnippet
+
+snippet \f "fraction" i
+\frac{$1}{$2}$0
+endsnippet
+########
+# Math #
+########
+
+snippet \si "si units" i
+\SI{$1}{$2}$0
+endsnippet
+
+snippet \sicm "si units cenitmetre" i
+\SI{$1}{\centi\metre}$0
+endsnippet
+
+snippet \sinm "si units cenitmetre" i
+\SI{$1}{\nano\metre}$0
+endsnippet
+
+snippet \sum "sum" i
+\sum_{$1}^{$2}{$3}$0
+endsnippet
+
+snippet \int "int" i
+\int_{$1}^{$2}{$3}$0
+endsnippet
+
+snippet \mR "real numbers" i
+\mathbb{R}^{$1}$0
+endsnippet
+

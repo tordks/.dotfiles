@@ -1,0 +1,25 @@
+
+snippet ps "print value" i
+print("$1: " + str($1))$0
+endsnippet
+
+
+snippet forran "for range" b
+for $1 in range($2):
+	$0
+endsnippet
+
+snippet forlen "for with len" i
+for $1 in range(len($2)):
+	$0
+endsnippet
+
+snippet forsiz "for with np.size" i
+for $1 in range(np.size($2)):
+	$0
+endsnippet
+
+snippet end "end program here" b
+plt.show()
+sys.exit()$0
+endsnippet
