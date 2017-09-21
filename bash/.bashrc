@@ -1,6 +1,9 @@
 # Source files;
 source ~/.zapp/z.sh
 
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi
 ####################
 #     Aliases      #
 ####################
