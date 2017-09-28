@@ -46,6 +46,9 @@ set -o vi
 #      Exports     #
 ####################
 
+#Set unlimited bash history
+HISTSIZE= HISTFILESIZE=
+
 # variable to chombo installation
 export CHOMBO_HOME="/home/tordks/programs/Chombo-3.2/lib/"
 
