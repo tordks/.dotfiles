@@ -75,6 +75,10 @@ Plug 'sjl/gundo.vim'
 " Saving vim sessions
 Plug 'tpope/vim-obsession'
 
+" Tmux navigation
+Plug 'christoomey/vim-tmux-navigator'
+
+
 """"""""""""
 " Movement "
 """"""""""""
@@ -129,7 +133,14 @@ Plug 'jiangxincode/mpi.vim'
 Plug 'vim-scripts/256-jungle'
 
 " Colorscheme solarized
-" Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'icymind/NeoSolarized'
+"
+" Colorscheme neodark
+Plug 'KeitaNakamura/neodark.vim'
+
+
+
 
 " Comment plugin
 Plug 'scrooloose/nerdcommenter'
@@ -326,6 +337,8 @@ set clipboard=unnamed       "Sets vim clipboard to the systems"
 
 
 colorscheme 256-jungle
+"colorscheme solarized
+"colorscheme neodark
 
 
 

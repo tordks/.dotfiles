@@ -1,201 +1,155 @@
+
+#####################
 # Source files;
+#####################
 source ~/.zapp/z.sh
 
-if command -v tmux>/dev/null; then
-  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-fi
-####################
-#     Aliases      #
-####################
 
-#alias python='python3'
-#alias python='python2.7'
+#####################
+# alias
+#####################
 alias xo='xdg-open'
 alias e='exit'
 alias rb='sudo reboot'
 alias po='sudo poweroff'
-alias speak='speaker-test -c 2 -r 48000 -D hw:0,3'
-#alias paraview='~/programs/paraview-5.0.1/bin/paraview &'
-alias gitstashdrop='git stash && git stash drop'
-#alias zotero='sh ~/programs/Zotero/run-zotero.sh'
 
-# Opening usefull stuff
-#alias paraview-doc='xo programs/paraview-5.0.1/doc/ParaViewGuide-CE.pdf'
-#alias trig='xo ~/git/post-install/usefull_pdfs/trig.pdf'
-#alias perf='sudo /usr/lib/linux-lts-utopic-tools-3.16.0-38/perf'
+#####################
+# custom settings
+#####################
 
-################
-# Key bindings #
-################
+# remove caps and set it to ctrl
+setxkbmap -option ctrl:nocaps
 
-# swap Control with Caps Lock
-setxkbmap -option ctrl:swapcaps
+# enable caps by double pressing shift
+setxkbmap -option shift:both_capslock
 
-# disable Caps Lock
-#xmodmap -e "keysym Caps_Lock = NoSymbol"
+# start by default in 
+#if command -v tmux>/dev/null; then
+  #[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+#fi
 
-
-####################
-#       Misc.      #
-####################
-
-set -o vi
-
-
-####################
-#      Exports     #
-####################
-
-#Set unlimited bash history
-HISTSIZE= HISTFILESIZE=
-
-# variable to chombo installation
-export CHOMBO_HOME="/home/tordks/programs/Chombo-3.2/lib/"
-
-# added by Anaconda3 2.5.0 installer
-export PATH="/home/tordks/anaconda3/bin:$PATH"
-
-
-# NATIVE BASHRC
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#####################
+# sensible settings
+#####################
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[ -z "$PS1" ] && return
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+# Load stuff specific to Macs if appropriate
+[ `uname` = Darwin ] && source .osx-compatibility.sh
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+# list directories before files (if installed version of ls allows this)
+if man ls | grep group-directories-first >&/dev/null; then
+    alias ls='ls --color=auto --group-directories-first'
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm|xterm-color|*-256color) color_prompt=yes;;
-esac
+# default settings for less. You may also want to disable line wrapping with -S
+export LESS='-MRi#8j.5'
+#             |||| `- center on search matches
+#             |||`--- scroll horizontally 8 columns at a time
+#             ||`---- case-insensitive search unless pattern contains uppercase
+#             |`----- parse color codes
+#             `------ show more information in prompt
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+# default settings for grep
+export GREP_OPTIONS='--color --binary-files=without-match --exclude-dir .git'
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
 
-if [ "$color_prompt" = yes ]; then
-    if [[ ${EUID} == 0 ]] ; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-    else
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
-    fi
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
-fi
-unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+# ALIASES
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+# common ls aliases
+alias l='ls -FB'  # --classify --ignore-backups
+alias la='ls -FA'  # --classify --almost-all
+alias ll='ls -Flah'  # --classify --all --human-readable'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+# this will color matches even when output to a non-tty (e.g. piped to less)
+alias grep3='grep --color=always --line-number --context=3'
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# Some commands are so common that they deserve one-letter shortcuts :)
+alias g='git'
+alias v='vim'
+alias L='less'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# Aliasing 'g' to 'git' wouldn't be useful without autocompletion.
+complete -o default -o nospace -F _git g
+. /usr/share/bash-completion/completions/git 2> /dev/null
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# Instead of rm, which deletes files permanently, I prefer to use trash-cli
+# (github.com/andreafrancia/trash-cli) which moves files to system trash.
+alias tp='trash-put'
+#alias rm='echo "This is not the footgun you are looking for."; false'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# Show a desktop notification when a command finishes. Use like this:
+#   sleep 5; alert
+function alert() {
+    if [ $? = 0 ]; then icon=terminal; else icon=error; fi
+    last_cmd="$(history | tail -n1 | sed 's/^\s*[0-9]*\s*//' | sed 's/;\s*alert\s*$//')"
+    notify-send -i $icon "$last_cmd"
+}
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
+
+# SETTINGS
+
+# enable autocompletion and make it case-insensitive
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
-  fi
 fi
+bind "set completion-ignore-case on"
 
-if [ -x /usr/bin/mint-fortune ]; then
-     /usr/bin/mint-fortune
+# let aliases work after sudo (see http://askubuntu.com/a/22043)
+alias sudo='sudo '
+
+# cd to a dir just by typing its name (requires bash > 4.0), autocorrect typos
+[ ${BASH_VERSION:0:1} -ge 4 ] && shopt -s autocd
+shopt -s cdspell
+
+# shell history is useful, let's have more of it
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+export HISTCONTROL=ignoredups   # don't store duplicated commands
+shopt -s histappend   # don't overwrite history file after each session
+
+# disable useless flow control binding, allowing Ctrl-S to search history forward
+stty -ixon
+
+# let Ctrl-O open ranger, a console file manager (http://nongnu.org/ranger/):
+bind '"\C-o":"ranger\C-m"'
+# this wrapper lets bash automatically change current directory to the last one
+# visited inside ranger.  (Use "cd -" to return to the original directory.)
+function ranger {
+    tempfile="$(mktemp)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" && cd -- "$(cat "$tempfile")"
+    rm -f -- "$tempfile"
+}
+
+
+
+# PROMPT
+
+# Colored prompt makes it easier to visually parse terminal output. Note that
+# using \[ and \] is necessary to prevent weird behavior (lines overlapping).
+
+# I'm using bright colors because in most terminal palettes the "normal" ones
+# (\e[35m, \e[34m and \e[36m) are too dim - feel free to adjust.
+if [ -n "$SSH_CONNECTION" ]; then  # connected through SSH?
+    usercolor="\[\e[95m\]"  # yes -> magenta
+else
+    usercolor="\[\e[94m\]"  # no -> blue
 fi
+pathcolor="\[\e[96m\]"  # cyan path
+resetcolors="\[\e[0m\]"
 
+# $(__git_ps1) displays git repository status in the prompt - very handy!
+# Read more: https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_DESCRIBE_STYLE="branch"
+GIT_PS1_SHOWUPSTREAM="verbose git"
 
-# added by Anaconda2 4.1.1 installer
-export PATH="/home/tordks/programs/anaconda2/bin:$PATH"
+# we don't want "command not found" errors when __git_ps1 is not installed
+type __git_ps1 &>/dev/null || function __git_ps1 () { true; }
 
-# added by Anaconda2 4.1.1 installer
-export PATH="/home/tordks/anaconda2/bin:$PATH"
-
-# added by Anaconda2 4.1.1 installer
-export PATH="/home/tordks/anaconda2/bin:$PATH"
-
-# added by Anaconda2 4.2.0 installer
-export PATH="/home/tordks/anaconda2/bin:$PATH"
-
-# added by Anaconda3 4.2.0 installer
-export PATH="/home/tordks/anaconda3/bin:$PATH"
+export PS1="${usercolor}\u@\h${pathcolor} \w${resetcolors}\$(__git_ps1)\n\\$ "

@@ -1,0 +1,91 @@
+
+[alias]
+    # COMMON SHORTHANDS
+
+    ap = add --patch   # choose which hunks to add - very useful
+    au = add --update   # stage only changes in tracked files
+
+    br = branch
+    co = checkout
+
+    # see what you're commiting when editing the commit message
+    ci = commit --verbose
+
+    d = diff --color=always
+    wd = diff --color=always --word-diff=color   # mnemonic: Word-Diff
+
+    g3 = grep --color=always --line-number --context 3
+
+    # unlike plain `pull`, this won't attempt a merge that may result in conflicts
+    pl = pull --ff-only
+
+    rb = rebase
+    rbo = rebase --onto   # quite useful, see examples in 'git help rebase'
+    rbi = rebase --interactive
+
+    rs = reset
+    rs1 = reset HEAD~1   # "soft undo" - remove last commit, but keep its changes
+
+    s = status --short   # see also --branch option
+    st = status
+
+
+    # PRETTY LOGS
+
+    # compact log with branch names etc.
+    ls = !git log --color=always --decorate --graph --date=relative \
+    --format=tformat:'%C(auto)%h%C(reset) -%C(auto)%d%C(reset) %s %C(dim)- %an, %ad%C(reset)'
+
+    # log All local and remote branches
+    la = !git ls HEAD --branches --remotes
+
+    # log both HEAD and its Upstream (if present)
+    lu = !git ls HEAD `git for-each-ref --format='%(upstream:short)' HEAD $(git symbolic-ref --quiet HEAD)`
+
+    # Long format - full commit message and summary of changes
+    ll = !git log --color=always --decorate --graph --stat-graph-width=30 --stat-count=30
+
+    # reflog with dates and commit message subject
+    rf = !GIT_PAGER='less -REXS' git log --walk-reflogs --format='%C(dim)%<(21,trunc)%ci%x08%x08%x08%x08%x08 %C(reset)%gd%C(reset): %C(auto)%h%C(reset) %gs %C(dim)- %<(33,trunc)%s%C(reset)'
+
+
+[color]
+    ui = auto
+
+[color "status"]
+    # use different color than untracked and unmerged paths have
+    changed = yellow
+
+[color "grep"]
+    # similar to standalone grep
+    filename = magenta
+
+[core]
+    # display non-ASCII characters (e.g. Polish) instead of quoting them
+    quotepath = false
+    # restore default pager behavior (needed because we manually set $LESS)
+    pager = "less -FRX"
+
+[diff]
+    # detect renamed files and show only actual differences between them
+    renames = copies
+
+[merge]
+    # in case of merge conflict also show how common ancestor looked like
+    conflictstyle = diff3
+
+[pager]
+    # don't wrap lines in log and blame output (needed since git 2.1)
+    log = "less -S"
+    blame = "less -S"
+
+[push]
+    # git < 2.0 pushed all matching branches by default (could be dangerous)
+    default = simple
+
+[rebase]
+    # automatically process "fixup!" commits when rebasing interactively
+autosquash = true
+[user]
+	email = tordks@hotmail.com
+	name = Tord
