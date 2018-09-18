@@ -2,7 +2,8 @@
 #####################
 # Source files;
 #####################
-source ~/.z/z.sh
+# source ~/.z/z.sh
+source ~/.zapp/z.sh
 
 
 #####################
@@ -12,6 +13,13 @@ alias xo='xdg-open'
 alias e='exit'
 alias rb='sudo reboot'
 alias po='sudo poweroff'
+alias gp='gpicview'
+
+
+####################
+# exports
+####################
+export PATH="/home/tordks/anaconda3/bin/:$PATH"
 
 #####################
 # custom settings
