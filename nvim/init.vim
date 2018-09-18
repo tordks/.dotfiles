@@ -33,7 +33,9 @@ call plug#begin('~/.config/nvim/plugged')
 """""""""""""""""""""""
 
 " Code completion
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'Shougo/deoplete.nvim'
+
 
 " Automatic .ycm_conf_extra.py generation
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -168,9 +170,15 @@ let g:UltiSnipsExpandTrigger="qw"
 let g:UltiSnipsJumpForwardTrigger="qw"
 let g:UltiSnipsJumpBackwardTrigger="wq"
 
-" YouCompleteMe settings
-let g:ycm_key_list_select_completion = ['<tab>', '<Down>']
-let g:ycm_extra_conf_globlist = ["~/Desktop/Sommerstudenter2016"]  
+" codecomplete settings
+"let g:ycm_key_list_select_completion = ['<tab>', '<Down>']
+"let g:ycm_extra_conf_globlist = ["~/Desktop/Sommerstudenter2016"]  
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+
+
 " run neomake for every save
 autocmd! BufWritePost * Neomake
 
