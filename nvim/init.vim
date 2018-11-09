@@ -52,10 +52,20 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'  
 "
 " A tree explorer plugin
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 
 " Python autocomplete
 Plug 'davidhalter/jedi-vim'
+
+" operations on surrounding stuff. Paranteces etc
+Plug 'tpope/vim-surround'
+
+" Make . work with some plugins
+Plug 'tpope/vim-repeat'
+
+" directory viewer. makes netwr easier
+Plug 'tpope/vim-vinegar'
+"
 
 
 """"""""""""""""""
@@ -314,6 +324,10 @@ set pastetoggle=<F2>
 "" SETTINGS "
 """""""""""""
 """""""""""""
+"nnoremap <Leader>f :NERDTreeToggle<Enter>
+"let NERDTreeMinimalUI = 1
+"let NERDTreeDirArrows = 1
+
 
 set nocompatible
 set background=dark
