@@ -1,5 +1,6 @@
-# TODO: Make this more intelligent
-# TODO: moce .zsh to .config
+# TODO: make this more intelligent
+# TODO: move .zsh to .config
+# TODO: add installation of xcape (for mapping esc to ctrl)
 
 link:
 	make linkzsh

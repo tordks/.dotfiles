@@ -2,11 +2,6 @@
 # custom settings
 #####################
 
-# remove caps and set it to ctrl
-setxkbmap -option ctrl:nocaps
-
-# enable caps by double pressing shift
-setxkbmap -option shift:both_capslock
 
 #####################
 # sensible settings

@@ -1,4 +1,14 @@
 
+# keyboard settings
+# remove caps and set it to ctrl
+setxkbmap -option ctrl:nocaps
+
+# enable caps by double pressing shift
+setxkbmap -option shift:both_capslock
+
+xcape -e 'Control_L=Escape'
+
+
 #zmodload zsh/zprof
 
 source ~/.zsh/.zshrc_antigen
