@@ -17,9 +17,22 @@ call plug#begin('~/.config/nvim/plugged')
 " NERDTree: File tree 
 "--------------------------------------------------------
 Plug 'scrooloose/nerdtree'
-nnoremap <Leader>f :NERDTreeToggle<Enter>
+Plug 'Xuyuanp/nerdtree-git-plugin'
+nnoremap <Leader>n :NERDTreeToggle<Enter>
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+
+" Start nerdtree on startup if no params to nvim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Start nerdtree when opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+" close vim if nerdtree is the only open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 "--------------------------------------------------------
 " Vim_vinegar: vinegar.vim enhances netrw,

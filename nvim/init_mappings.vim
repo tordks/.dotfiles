@@ -41,11 +41,3 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 
 " Open terminal in new split window and start in insert mode
 " nnoremap <leader>n  :20sp <cr> <C-W>r :terminal <cr>
-
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
-
-" $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
