@@ -85,12 +85,11 @@ alias 'cd..= cd ..'
 # Global aliases (expand whatever their position)
 #  e.g. find . E L
 
-# TODO: crashes with alias in fasd
 # Quick find
-#f() {
-#    echo "find . -iname \"*$1*\""
-#    find . -iname "*$1*"
-#}
+qf() {
+    echo "find . -iname \"*$1*\""
+    find . -iname "*$1*"
+}
 
 # Quick regex history search
 zh() {
@@ -98,10 +97,11 @@ zh() {
     grep --text ~/.zsh_history --perl-regexp --regexp $pattern
 }
 
+# # TODO: this does not what it says...
 # Change terminal title
-title() {
-    echo -ne "\033]30;$*\007"
-}
+#title() {
+#    echo -ne "\033]30;$*\007"
+#}
 
 # mkcd -- mkdir and cd at once
 mkcd() { mkdir -p -- "$1" && cd -- "$1" }
@@ -112,7 +112,7 @@ compdef mkcd=mkdir
 # Some functions, like _apt and _dpkg, are very slow. You can use a cache in
 # order to proxy the list of results (like the list of available debian
 # packages)
-zstyle ':completion:*' use-cache on
+zstyle ':completion:*' use-cache c n
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Quick ../../.. from https://github.com/blueyed/oh-my-zsh
