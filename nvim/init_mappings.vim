@@ -1,6 +1,3 @@
-" leader is comma 	
-" TODO: consider mapping leader to space -> Need to change folding key
-let mapleader = ","
 
 " Change paste setting by pressing F2
 nnoremap <F2> :set invpaste paste?<CR>

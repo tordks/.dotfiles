@@ -4,7 +4,8 @@
 "" SETTINGS "
 """""""""""""
 """""""""""""
-" Prevents excessive use of the keys below
+" TODO: consider mapping leader to space -> Need to change folding key
+let mapleader = ","
 
 set nocompatible
 set background=dark
