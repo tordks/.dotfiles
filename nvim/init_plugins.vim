@@ -110,7 +110,9 @@ Plug 'deoplete-plugins/deoplete-clang'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 0
 let g:deoplete#auto_refresh_delay = 0
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+inoremap <expr> <C-n>  deoplete#mappings#manual_complete()
+ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " remap tab to switch key
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -119,9 +121,16 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Jedi: autocompletion and static analysis library for python
 "--------------------------------------------------------
 " Note: cannot move to builtins
-Plug 'davidhalter/jedi-vim'
 " using deoplete-jedi for autocomplete, so disable the one from jedi
 let g:jedi#completions_enabled = 0
+
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = ""
+"let g:jedi#documentation_command = "K"
+"let g:jedi#usages_command = "<leader>n"
+"let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
 
 
 "--------------------------------------------------------
@@ -193,6 +202,8 @@ Plug 'neomake/neomake'
 "call neomake#configure#automake('w')
 "TODO: make a test and decide to set python or python3
 let g:neomake_python_python_exe = 'python3'
+let g:neomake_logfile = '/tmp/neomake.log'
+let g:neomake_tempfile_dir = '/tmp/'
 let g:neomake_verbose=1
 let g:neomake_open_list = 0
 autocmd! BufWritePost,BufEnter * Neomake
@@ -205,10 +216,19 @@ autocmd! BufWritePost,BufEnter * Neomake
 
 
 "--------------------------------------------------------
-" Black: 
+" Black: Uncompromising automatic python code formatter
 "--------------------------------------------------------
 Plug 'python/black'
 "autocmd BufWritePost *.py execute ':Black'
+
+
+"--------------------------------------------------------
+" YAPF: Automatic python code formatter
+"--------------------------------------------------------
+Plug 'mindriot101/vim-yapf'
+let g:yapf_style = "pep8"
+:nnoremap <leader>y :Yapf<cr>
+
 
 
 "--------------------------------------------------------
@@ -326,6 +346,11 @@ Plug 'KeitaNakamura/neodark.vim'
 " Misc:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"--------------------------------------------------------
+" Vimhardtime: notetaking
+"--------------------------------------------------------
+Plug 'rhysd/notes-cli'
 
 "--------------------------------------------------------
 " Vimhardtime: Make life harder, but easier

@@ -34,7 +34,7 @@ set showmatch               " show matching braces
 set lazyredraw              " do not redraw when executing macros; much faster
 set foldenable              " enable folding
 set foldlevelstart=10       " open most folds by default
-"set foldnestmax=10          " 10 nested fold max
+set foldnestmax=3          " 10 nested fold max
 set foldmethod=indent       " fold based on indent level
 set scrolloff=10             " Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15

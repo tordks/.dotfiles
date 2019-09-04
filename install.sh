@@ -17,18 +17,18 @@
 # TODO: Fix python setup given a virtual environment
 # Setting up python
 # https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
-pip3 install --user neovim
+pip install --user neovim
 
 
 # deoplete install
-pip3 install --user pynvim
-pip3 install --user --upgrade pynvim
+pip install --user pynvim
+pip install --user --upgrade pynvim
 
 # jedi install
-pip3 install jedi
+pip install jedi
 
 # black install
-pip3 install black
+pip install black
 
 
 # fasd
@@ -36,4 +36,4 @@ pip3 install black
 # currently set .zshrc_antigen
 
 # ag install 
-apt-get install silversearcher-ag
+# apt-get install silversearcher-ag

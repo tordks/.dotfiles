@@ -47,6 +47,7 @@
 
     # reflog with dates and commit message subject
     rf = !GIT_PAGER='less -REXS' git log --walk-reflogs --format='%C(dim)%<(21,trunc)%ci%x08%x08%x08%x08%x08 %C(reset)%gd%C(reset): %C(auto)%h%C(reset) %gs %C(dim)- %<(33,trunc)%s%C(reset)'
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
 
 [color]
@@ -87,5 +88,5 @@
     # automatically process "fixup!" commits when rebasing interactively
 autosquash = true
 [user]
-	email = tordks@hotmail.com
-	name = Tord
+	email = sorensen@stcorp.no
+	name = Tord Kriznik Sørensen

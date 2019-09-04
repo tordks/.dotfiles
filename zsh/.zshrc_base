@@ -56,7 +56,7 @@ export BLOCK_SIZE="'1"
 export QUOTING_STYLE=literal
 
 # Short command aliases
-alias 'l=ls'
+alias 'l=ls -l'
 alias 'la=ls -FA'
 alias 'll=ls -Flah'
 alias 'llh=ls -l --si'

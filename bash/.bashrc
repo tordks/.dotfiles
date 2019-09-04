@@ -3,7 +3,7 @@
 # Source files;
 #####################
 # source ~/.z/z.sh
-source ~/.zapp/z.sh
+#source ~/.zapp/z.sh
 
 
 #####################
@@ -177,3 +177,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
