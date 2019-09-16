@@ -7,12 +7,12 @@ nnoremap <C-c> :bp\|bd # <cr>
 
 " jk is escape and don't move back one character
 " TODO: change this map.. Makes writing j slow.
-inoremap jk <esc>l
-vnoremap jk <esc>
+" inoremap jk <esc>l
+" vnoremap jk <esc>
 
 " terminal emulator esc
-tnoremap <Esc> <C-\><C-n>
-tnoremap jk <C-\><C-n>
+" tnoremap <Esc> <C-\><C-n>
+" tnoremap jk <C-\><C-n>
 
 " TODO: another key if leader -> space
 " space open/closes folds

@@ -346,11 +346,19 @@ Plug 'KeitaNakamura/neodark.vim'
 " Misc:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
+
 "--------------------------------------------------------
-" Vimhardtime: notetaking
+" Notescli: notetaking
 "--------------------------------------------------------
-Plug 'rhysd/notes-cli'
+"Plug 'rhysd/notes-cli'
+
+"--------------------------------------------------------
+" Vimwiki: notetaking and personal wiki
+"--------------------------------------------------------
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.wiki'}]
+
 
 "--------------------------------------------------------
 " Vimhardtime: Make life harder, but easier

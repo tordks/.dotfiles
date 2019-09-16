@@ -29,6 +29,7 @@ pip install jedi
 
 # black install
 pip install black
+pip install yapf
 
 
 # fasd

@@ -40,5 +40,5 @@ set scrolloff=10             " Start scrolling when we're 8 lines away from marg
 set sidescrolloff=15
 set sidescroll=1
 set mouse=a                 "Enable mouse"
-set clipboard=unnamed       "Sets vim clipboard to the systems"
+"set clipboard=unnamed       "Sets vim clipboard to the systems"
 
