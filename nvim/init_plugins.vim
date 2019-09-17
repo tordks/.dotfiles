@@ -23,8 +23,8 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 " Start nerdtree on startup if no params to nvim
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Start nerdtree when opening a directory
 autocmd StdinReadPre * let s:std_in=1
@@ -358,6 +358,9 @@ Plug 'KeitaNakamura/neodark.vim'
 Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.wiki'}]
+nmap <Leader>we <Plug>VimwikiSplitLink
+nmap <Leader>wq <Plug>VimwikiVSplitLink
+nmap <Leader>wp <Plug>VimwikiPrevLink
 
 
 "--------------------------------------------------------
