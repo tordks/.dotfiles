@@ -1,5 +1,5 @@
 
-let mapleader = ","
+let mapleader = " "
 
 " Move between buffers
 nnoremap <A-h> :bp<cr> 
@@ -25,7 +25,7 @@ autocmd TermOpen * setlocal nonumber
 nnoremap <leader>d :bp\|bd # <cr>
 
 " space open/closes folds
-nnoremap <space> za " 
+" nnoremap <space> za " 
 
 " highlight last inserted text
 nnoremap gV `[v`]
