@@ -2,6 +2,7 @@
 " TODO: Create install.sh script which installs all dependencie
 " TODO: Move unused, plugins to its own init_plugins_unused.vim
 "       for potential later use.
+" TODO: extract settings to eg. deoplete.vim etc.
 " TODO: investigate ctags
 " TODO: investigate ack vs ag
 
@@ -99,24 +100,32 @@ Plug 'tpope/vim-fugitive'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" std
 "--------------------------------------------------------
 " Deoplete: code completion framework
 " Good for python/go
 "--------------------------------------------------------
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'deoplete-plugins/deoplete-clang'
-"Plug 'zchee/deoplete-clang'
+
+Plug 'zchee/deoplete-clang'
+" Plug 'deoplete-plugins/deoplete-clang'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 0
 let g:deoplete#auto_refresh_delay = 0
-
+"
 inoremap <expr> <C-n>  deoplete#mappings#manual_complete()
  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " remap tab to switch key
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" clang
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang/6.0/include/'
+let g:deoplete#sources#clang#clang_complete_database = $COMPILEDB_JSON
+
+" std
 "--------------------------------------------------------
 " Jedi: autocompletion and static analysis library for python
 "--------------------------------------------------------
@@ -134,6 +143,33 @@ let g:jedi#rename_command = "<leader>r"
 
 
 "--------------------------------------------------------
+" NCM2: code completion framework
+"--------------------------------------------------------
+"Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
+"
+"" enable ncm2 for all buffers
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"
+"" IMPORTANT: :help Ncm2PopupOpen for more information
+"set completeopt=noinsert,menuone,noselect
+"
+"" NOTE: you need to install completion sources to get completions. Check
+"" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+"" TODO: add snippet sources
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-tmux'
+"Plug 'ncm2/ncm2-jedi'
+"Plug 'ncm2/ncm2-pyclang'
+"
+"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
+"let g:ncm2_pyclang#database_path= $COMPILEDB_JSON
+"
+"" goto declaration
+"autocmd FileType c,cpp nnoremap <buffer> gd :<c-u>call ncm2_pyclang#goto_declaration()<cr>
+
+"--------------------------------------------------------
 " YouCompleteMe: Code completion framework
 " better for c/c++?
 "--------------------------------------------------------
@@ -147,7 +183,9 @@ let g:jedi#rename_command = "<leader>r"
 " Cocvim: Intellisense engine for vim8 & neovim
 "--------------------------------------------------------
 " TODO: Test
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 
 "--------------------------------------------------------
 " Ployglot: A collection of language packs with 
@@ -195,24 +233,26 @@ if has('conceal')
 endif
 
 
+" std
 "--------------------------------------------------------
 " Neomake: Asynchronous linting and make framework
 "--------------------------------------------------------
-Plug 'neomake/neomake'
-"call neomake#configure#automake('w')
-"TODO: make a test and decide to set python or python3
-let g:neomake_python_python_exe = 'python3'
-let g:neomake_logfile = '/tmp/neomake.log'
-let g:neomake_tempfile_dir = '/tmp/'
-let g:neomake_verbose=1
-let g:neomake_open_list = 0
-autocmd! BufWritePost,BufEnter * Neomake
+"Plug 'neomake/neomake'
+""call neomake#configure#automake('w')
+""TODO: make a test and decide to set python or python3
+"let g:neomake_python_python_exe = 'python3'
+"let g:neomake_logfile = '/tmp/neomake.log'
+"let g:neomake_tempfile_dir = '/tmp/'
+"let g:neomake_verbose=1
+"let g:neomake_open_list = 0
+"autocmd! BufWritePost,BufEnter * Neomake
 
 "--------------------------------------------------------
 " Ale: Asynchronous Lint Engine
 "--------------------------------------------------------
 " TODO: test
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
+"autocmd! BufWritePost,BufEnter * Neomake
 
 
 "--------------------------------------------------------

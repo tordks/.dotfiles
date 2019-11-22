@@ -8,11 +8,12 @@ setxkbmap -option shift:both_capslock
 
 xcape -e 'Control_L=Escape'
 
-
 #zmodload zsh/zprof
 
+source ~/.zsh/.zshrc_export
 source ~/.zsh/.zshrc_antigen
 source ~/.zsh/.zshrc_base
+
 #
 # TODO: Need cleanup
 source ~/.zsh/.zshrc_from_bashrc
