@@ -1,0 +1,33 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+        glob: true
+    shell:
+        stdin: true
+        stdout: true
+
+- clean: ['~', '~/.zsh', '~/.config/nvim']
+
+- link:
+    ~/.config/nvim/: nvim/*
+    ~/.zsh/: zsh/*
+    ~/.zshrc: .zshrc
+    ~/.tmux.conf: .tmux.conf
+    ~/.gitconfig: .gitconfig
+    ~/.bashrc: bash/.bashrc
+    ~/.bash_profile: bash/.bash_profile
+
+
+- create:
+    - ~/.vim/undo-history
+
+
+# TODO: probably missing some dependencies
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [curl -L git.io/antigen > antigen.zsh, Get newest antigen]
+    - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
+    - [nvim +PlugInstall +qall, Install nvim plugins]
+    - [chsh -s $(which zsh), Enter password to set zsh as default shell]
+
