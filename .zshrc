@@ -1,4 +1,6 @@
 
+# TODO: CLEAN and ORGANIZE
+
 # keyboard settings
 # remove caps and set it to ctrl
 setxkbmap -option ctrl:nocaps
@@ -10,13 +12,13 @@ xcape -e 'Control_L=Escape'
 
 #zmodload zsh/zprof
 
-source ~/.zsh/.zshrc_export
-source ~/.zsh/.zshrc_antigen
-source ~/.zsh/.zshrc_base
+source ~/.zsh/env.zsh
+source ~/.zsh/antigen_config.zsh
+source ~/.zsh/base.zsh
 
 #
 # TODO: Need cleanup
-source ~/.zsh/.zshrc_from_bashrc
+source ~/.zsh/from_bashrc.zsh
 
 #fuzzy file completion
 eval "$(fasd --init auto)"
