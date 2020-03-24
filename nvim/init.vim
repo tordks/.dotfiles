@@ -249,7 +249,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 " === Vimwiki ===
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.wiki'}]
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+
 nmap <Leader>we <Plug>VimwikiSplitLink
 nmap <Leader>wq <Plug>VimwikiVSplitLink
 nmap <Leader>wp <Plug>VimwikiPrevLink
