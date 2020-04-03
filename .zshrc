@@ -20,6 +20,16 @@ source ~/.zsh/base.zsh
 # TODO: Need cleanup
 source ~/.zsh/from_bashrc.zsh
 
+
+# Python venv management
+export VENVFOLDER="$HOME/code/venvs/"
+activate() {
+    source $VENVFOLDER$1"/bin/activate"
+}
+mkvenv() {
+    python -m venv $VENVFOLDER$1 --prompt $1
+}
+
 #fuzzy file completion
 eval "$(fasd --init auto)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -48,6 +58,8 @@ else
     fi
 fi
 unset __conda_setup
+CONDA_AUTO_ACTIVATE_BASE=false
+
 # <<< conda initialize <<<
 
 #zprof
