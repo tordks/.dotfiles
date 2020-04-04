@@ -32,6 +32,11 @@ mkvenv() {
     shift
     python -m venv  $D --prompt $P $@
 }
+rmvenv() {
+    local D=$VENVFOLDER$1
+    shift
+    rm $D $@
+}
 
 #fuzzy file completion
 eval "$(fasd --init auto)"
