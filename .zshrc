@@ -27,7 +27,10 @@ activate() {
     source $VENVFOLDER$1"/bin/activate"
 }
 mkvenv() {
-    python -m venv $VENVFOLDER$1 --prompt $1
+    local D=$VENVFOLDER$1
+    local P=$1
+    shift
+    python -m venv  $D --prompt $P $@
 }
 
 #fuzzy file completion
