@@ -22,7 +22,7 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 autocmd TermOpen * setlocal nonumber
 
 " Delete buffer from split"
-nnoremap <leader>d :bp\|bd # <cr>
+nnoremap <leader>bd :bp\|bd # <cr>
 
 " space open/closes folds
 " nnoremap <space> za " 
