@@ -7,21 +7,25 @@
 "       * Indent guides
 
 
+let g:python3_host_prog = '/home/tordks/.pyenv/versions/neovim3/bin/python'
+
 source ~/.config/nvim/plugins.vim
 
 " ============ General Config ============
+filetype plugin indent on
+
 set autoread                " Reload files changed outside vim
 set colorcolumn=80          " Highlight the character limit
 set cursorline              " highlights the line where the cursor is
 if &encoding != 'utf-8'
     set encoding=utf-8          " sets encoding to utf-8
 endif
+set hidden
 set history=9999            " remember more history than usual
 set inccommand=nosplit      " use incremental replace
 set laststatus=2            " always displaying status line
 set lazyredraw              " do not redraw when executing macros; much faster
 set mouse=a                 " Enable mouse"
-set nocompatible
 set noshowmode              " Don't show the mode(airline is handling this)
 set number                  " display line numbers
 set ruler                   " show the cursor position with a ruler
@@ -48,43 +52,6 @@ if &t_Co >= 256 || has("gui_running")
   "colorscheme neodark
   colorscheme gruvbox
 endif
-
-" Lightline
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ }
-
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-let g:lightline.component_type = {
-      \  'linter_checking': 'left',
-      \  'linter_warnings': 'warning',
-      \  'linter_errors': 'error',
-      \  'linter_ok': 'left',
-      \ }
-let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings']] }
-
-
-" quick-scope
-augroup qs_colors
-  autocmd!
-  autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
-augroup END
-" Trigger a highlight in the appropriate direction when pressing these keys:
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-" GitGutter
-autocmd BufWritePost * GitGutter
-
-" ultisnips options
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " ================ Search Settings  =================
@@ -119,9 +86,6 @@ set shiftwidth=4
 set tabstop=4
 set expandtab " smart expansion of tabs into spaces
 
-filetype plugin on
-filetype indent on
-
 " Display tabs and trailing spaces visually
 set list listchars=trail:·,tab:┊\ ,extends:>,precedes:<,nbsp:·
 
@@ -140,17 +104,17 @@ set scrolloff=10         "Start scrolling when we're 10 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-
-
+"
 " ================ Keybindings ======================
 source ~/.config/nvim/keybindings.vim
 
-" ================ Keybindings ======================
+
+" ================ Funcs ======================
 " TODO: reevaluate funcs
 source ~/.config/nvim/funcs.vim
 
 
-
+" ================ Plugins ======================
 
 " === NERDTree ===
 nnoremap <Leader>n :NERDTreeToggle<Enter>
@@ -164,7 +128,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " close vim if nerdtree is the only open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
+"
 " === FZF ===
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
@@ -212,17 +176,27 @@ augroup fzf
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
-" ================ Completion/Lint/Docs =======================
-" hidden makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" if hidden is not set, TextEdit might fail.
-set hidden
-set cmdheight=2 " better display messages
+" === Ale ===
 set updatetime=300 " bad experience with default 4000 for diagnostic messages
-source ~/.config/nvim/coc.vim
 source ~/.config/nvim/ale.vim
 
-let g:echodoc#enable_at_startup=1
+
+" === Deoplete/Jedi ===
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+let g:deoplete#enable_at_startup = 1
+let g:jedi#completions_enabled = 0
+
+call deoplete#custom#source('ale', 'dup', v:true)
+
+
+" === Echodoc ===
+set cmdheight=2 " needed, or else output is hidden
+let g:echodoc#enable_at_startup=0
+let g:echodoc#type = 'floating'
+highlight link EchoDocFloat Pmenu
+
+
 
 " === Gundo ===
 nnoremap <leader>u :GundoToggle<CR>
@@ -232,8 +206,10 @@ nnoremap <leader>u :GundoToggle<CR>
 let g:yapf_style = "pep8"
 :nnoremap <leader>y :Yapf<cr>
 
+
 " === Tabular ===
 vnoremap <leader>t :Tabularize /
+
 
 " === Yoink ===
 " TODO: evaluate mapping
@@ -242,9 +218,45 @@ nmap <c-p><c-p> <plug>(YoinkPostPasteSwapForward)
 nmap p <plug>(YoinkPaste_p)
 nmap P <plug>(YoinkPaste_P)
 
-" === airline ===
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+
+" === Quick-scope ===
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+augroup END
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
+" === GitGutter ===
+autocmd BufWritePost * GitGutter
+
+
+" === Ultisnips ===
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+" === Lightline ===
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ }
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+let g:lightline.component_type = {
+      \  'linter_checking': 'left',
+      \  'linter_warnings': 'warning',
+      \  'linter_errors': 'error',
+      \  'linter_ok': 'left',
+      \ }
+let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings']] }
 
 
 " === Vimwiki ===

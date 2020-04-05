@@ -20,11 +20,19 @@ Plug 'honza/vim-snippets'
 
 " Autocompletion and autoformatting
 Plug 'mindriot101/vim-yapf'  " automatic python code formatter
-Plug 'w0rp/ale' " vim syntax checker
-" Plug 'zxqfl/tabnine-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'} "Intellisense engine for vim8 & neovim
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fisadev/vim-isort' " auto sort python imports
+Plug 'w0rp/ale' " vim linter and formatter (can wrap multiple formatters)
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
+Plug 'jiangmiao/auto-pairs' " automatically pair paranthesis
+"
+"
+" Syntax and language integration
+Plug 'plasticboy/vim-markdown'
+Plug 'lervag/vimtex'
+"Plug 'octol/vim-cpp-enhanced-highlight'
+"Plug 'Shougo/echodoc.vim'
 
 
 " Motions and general text editing
@@ -35,13 +43,6 @@ Plug 'tpope/vim-surround' " mappings to del/change/add surroundings
 Plug 'scrooloose/nerdcommenter' " mass comment based on language
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'unblevable/quick-scope' " highlights first unique char on line
-
-
-" Syntax and language integration
-Plug 'plasticboy/vim-markdown'
-Plug 'lervag/vimtex'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'Shougo/echodoc.vim'
 
 
 " Interface
