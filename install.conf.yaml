@@ -15,6 +15,7 @@
     ~/.zsh/: zsh/*
     ~/.zshrc: .zshrc
     ~/.tmux.conf: .tmux.conf
+    ~/.taskrc: .taskrc
     ~/.gitconfig: .gitconfig
     ~/.bashrc: bash/.bashrc
     ~/.bash_profile: bash/.bash_profile
@@ -25,6 +26,7 @@
 
 
 # TODO: probably missing some dependencies
+# TODO: create neovim venv
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm, Get tmux plugin manager]
@@ -33,4 +35,6 @@
     - [nvim +PlugInstall +qall, Install nvim plugins]
     - [chsh -s $(which zsh), Enter password to set zsh as default shell]
     - [curl https://pyenv.run | bash, Install python version and venv manager]
+    - [sudo apt install taskwarrior, Install taskwarrior]
+    - [pip3 install tasklib, Install taskwarrior python bindings]
 

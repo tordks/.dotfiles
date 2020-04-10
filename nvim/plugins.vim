@@ -60,6 +60,10 @@ Plug 'KeitaNakamura/neodark.vim'
 
 " Misc
 Plug 'vimwiki/vimwiki' " Notetaking and personal wiki
+Plug 'tbabej/taskwiki' " vimwiki + taskwarrior integration
+Plug 'powerman/vim-plugin-AnsiEsc' " adds color support in charts (taskwiki)
+Plug 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by scope (enables taskwiki file navigation)
+Plug 'blindFS/vim-taskwarrior' " vim interface for taskwarrior
 Plug 'tpope/vim-obsession' " automatic sessioning
 
 call plug#end()

@@ -260,9 +260,15 @@ let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'lint
 
 
 " === Vimwiki ===
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let work_wiki={'path': '~/Dropbox/vimwiki/work', 'syntax': 'markdown', 'ext': '.md'}
+let personal_wiki={'path': '~/Dropbox/vimwiki/personal', 'syntax': 'markdown', 'ext': '.md'}
+let g:vimwiki_list = [work_wiki, personal_wiki]
 let g:vimwiki_global_ext = 0
+
+" === Taskwiki ===
+let g:taskwiki_markup_syntax = "markdown"
+
 
 nmap <Leader>we <Plug>VimwikiSplitLink
 nmap <Leader>wq <Plug>VimwikiVSplitLink
