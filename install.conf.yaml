@@ -5,7 +5,7 @@
         glob: true
         force: false
     shell:
-        stdin: false
+        stdin: true
         stdout: true
         stderr: true
 
@@ -30,6 +30,8 @@
 # TODO: probably missing some dependencies
 # TODO: currently need to source .zshrc for all pip installs etc. due to pyenv.
 #       being also installed in this script
+# TODO: should add separate instlal scripts for separate toole? eg. like done
+#       for tmux?
 
 # set up dotbot
 - shell:
@@ -39,12 +41,20 @@
 - shell:
     - [sudo apt -y update && sudo apt -y upgrade]
 
-## zsh + tmux
+# Set up shell
 - shell:
+    - [sudo apt install -y fasd silversearcher-ag]
     - [chsh -s $(which zsh), Enter password to set zsh as default shell]
     - [curl -L git.io/antigen > zsh/antigen.zsh, Get newest antigen]
-    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm, Get tmux plugin manager]
+    - [source ~/.zshrc && ./install_tmux.sh, Install tmux] # TODO: Installing plugins currently not working...
 
+# TODO: clean these. got them from pyenv wiki: https://github.com/pyenv/pyenv/wiki/common-build-problems
+# TODO: this originated from the pip installed pandas lacking bz2
+# Common dependencies for building python
+- shell:
+    - [sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev libffi-dev liblzma-dev python-openssl git, Install pyenv prerequisites]
 
 # pyenv
 - shell:
@@ -58,15 +68,13 @@
     - [source ~/.zshrc && pyenv global 3.7.7, Set python 3.7.7 as global python]
 
 # nvim
+# TODO: make a requirements.txt for the neovim env
 - shell:
     - [sudo apt install neovim, Install neovim]
     - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --ceate-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
     - [source ~/.zshrc && pyenv virtualenv 3.7.7 neovim3, Set up default neovim venv]
     - [source ~/.zshrc && pyenv activate neovim3 && pip install --upgrade pip]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install jedi]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install flake8]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install pylint]
+    - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim jedi flake8 pylint]
     - [source ~/.zshrc && nvim +PlugInstall +qall, Install nvim plugins, press enter]
 
 # taskwarrior + timewarrior
@@ -76,4 +84,4 @@
     - [sudo apt install taskwarrior, Install timewarrior]
       #- [wget "https://raw.githubusercontent.com/GothenburgBitFactory/timewarrior/dev/ext/on-modify.timewarrior" -P ~/Dropbox/taskwarrior/hooks, Download taskwarrior hook for timewarrior]
       #- [chmod +x ~/Dropbox/taskwarrior/hooks/on-modify.timewarrior, Make timewarrior hook executable]
-    - [source ~/.zshrc && pip3 install tasklib, Install taskwarrior python bindings]
+    - [source ~/.zshrc && pip install tasklib, Install taskwarrior python bindings]
