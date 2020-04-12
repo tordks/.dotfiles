@@ -1,3 +1,5 @@
+# TODO: currently not working to call from the commandline..
+
 #Install
 sudo apt install tmux
 
