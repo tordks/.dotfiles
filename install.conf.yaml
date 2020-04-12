@@ -3,9 +3,11 @@
         create: true
         relink: true
         glob: true
+        force: false
     shell:
-        stdin: true
+        stdin: false
         stdout: true
+        stderr: true
 
 - clean: ['~', '~/.zsh', '~/.config/nvim']
 
@@ -26,15 +28,52 @@
 
 
 # TODO: probably missing some dependencies
-# TODO: create neovim venv
+# TODO: currently need to source .zshrc for all pip installs etc. due to pyenv.
+#       being also installed in this script
+
+# set up dotbot
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm, Get tmux plugin manager]
-    - [curl -L git.io/antigen > zsh/antigen.zsh, Get newest antigen]
-    - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
-    - [nvim +PlugInstall +qall, Install nvim plugins]
-    - [chsh -s $(which zsh), Enter password to set zsh as default shell]
-    - [curl https://pyenv.run | bash, Install python version and venv manager]
-    - [sudo apt install taskwarrior, Install taskwarrior]
-    - [pip3 install tasklib, Install taskwarrior python bindings]
 
+# update and upgrade
+- shell:
+    - [sudo apt -y update && sudo apt -y upgrade]
+
+## zsh + tmux
+- shell:
+    - [chsh -s $(which zsh), Enter password to set zsh as default shell]
+    - [curl -L git.io/antigen > zsh/antigen.zsh, Get newest antigen]
+    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm, Get tmux plugin manager]
+
+
+# pyenv
+- shell:
+    - command: curl https://pyenv.run | bash
+      description: Install python version and venv manager,
+      stderr: true
+      #- [sudo apt-get install libffi-dev, Install Cpython dependency]
+    - command: source ~/.zshrc && pyenv install 3.7.7
+      description: Install python 3.7.7
+      stderr: true
+    - [source ~/.zshrc && pyenv global 3.7.7, Set python 3.7.7 as global python]
+
+# nvim
+- shell:
+    - [sudo apt install neovim, Install neovim]
+    - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --ceate-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
+    - [source ~/.zshrc && pyenv virtualenv 3.7.7 neovim3, Set up default neovim venv]
+    - [source ~/.zshrc && pyenv activate neovim3 && pip install --upgrade pip]
+    - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim]
+    - [source ~/.zshrc && pyenv activate neovim3 && pip install jedi]
+    - [source ~/.zshrc && pyenv activate neovim3 && pip install flake8]
+    - [source ~/.zshrc && pyenv activate neovim3 && pip install pylint]
+    - [source ~/.zshrc && nvim +PlugInstall +qall, Install nvim plugins, press enter]
+
+# taskwarrior + timewarrior
+# TODO: find taskwarrior folder automatically
+- shell:
+    - [sudo apt install taskwarrior, Install taskwarrior]
+    - [sudo apt install taskwarrior, Install timewarrior]
+      #- [wget "https://raw.githubusercontent.com/GothenburgBitFactory/timewarrior/dev/ext/on-modify.timewarrior" -P ~/Dropbox/taskwarrior/hooks, Download taskwarrior hook for timewarrior]
+      #- [chmod +x ~/Dropbox/taskwarrior/hooks/on-modify.timewarrior, Make timewarrior hook executable]
+    - [source ~/.zshrc && pip3 install tasklib, Install taskwarrior python bindings]

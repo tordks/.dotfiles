@@ -25,9 +25,9 @@ eval "$(fasd --init auto)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # rust stuff
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH=/.cargo/bin:$PATH
-source ~/.cargo/env
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH=/.cargo/bin:$PATH
+# source ~/.cargo/env
 
 # exports
 export XDG_CONFIG_HOME=~/.config

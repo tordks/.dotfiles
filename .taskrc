@@ -11,7 +11,16 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/Dropbox/taskwarrior/
+data.location=~/Dropbox/taskwarrior
+#data.location=~/.task
+
+
+# Config
+journal.time=on
+weekstart=monday
+
+# Indicate the active task in reports
+active.indicator=>
 
 # Color theme (uncomment one to use)
 #include /usr/share/taskwarrior/light-16.theme
