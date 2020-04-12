@@ -1,3 +1,4 @@
+source ~/.zsh/env_work.zsh
 
 export EDITOR=nvim
 

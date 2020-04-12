@@ -44,12 +44,12 @@ alias sudo='sudo '
 
 # this wrapper lets bash automatically change current directory to the last one
 # visited inside ranger.  (Use "cd -" to return to the original directory.)
-#function ranger {
-#    tempfile="$(mktemp)"
-#    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-#    test -f "$tempfile" && cd -- "$(cat "$tempfile")"
-#    rm -f -- "$tempfile"
-#}
+function ranger {
+    tempfile="$(mktemp)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" && cd -- "$(cat "$tempfile")"
+    rm -f -- "$tempfile"
+}
 
 
 

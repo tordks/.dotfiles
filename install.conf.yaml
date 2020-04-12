@@ -18,6 +18,7 @@
     ~/.zshrc: .zshrc
     ~/.tmux.conf: .tmux.conf
     ~/.taskrc: .taskrc
+    #~/.timewarrior/: .timewarrior.cfg
     ~/.gitconfig: .gitconfig
     ~/.bashrc: bash/.bashrc
     ~/.bash_profile: bash/.bash_profile
@@ -26,7 +27,7 @@
 - create:
     - ~/.vim/undo-history
 
-
+# TODO: move timewarrior folder to Dropbox
 # TODO: probably missing some dependencies
 # TODO: currently need to source .zshrc for all pip installs etc. due to pyenv.
 #       being also installed in this script

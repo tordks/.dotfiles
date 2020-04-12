@@ -17,6 +17,7 @@ antigen bundle heroku
 antigen bundle djui/alias-tips # gives tips if alias for a command exist
 antigen bundle zdharma/fast-syntax-highlighting #syntax highlighting in shell
 
+FZFZ_RECENT_DIRS_TOOL=fasd # set fasd to be the fuzzy file finder
 antigen bundle junegunn/fzf # fuzzy file finder
 #antigen bundle andrewferrier/fzf-z # combines fzf and z/fasd/autojump
 antigen bundle hschne/fzf-git # enables fzf fuzzy search with git
@@ -37,7 +38,6 @@ antigen apply
 
 # TODO: split aliases and settings into their own file
 source $ZSH/plugins/fasd/fasd.plugin.zsh
-FZFZ_RECENT_DIRS_TOOL=fasd # set fasd to be the fuzzy file finder
 
 #Set by fasd by default
 #alias a='fasd -a'        # any
