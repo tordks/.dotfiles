@@ -37,3 +37,6 @@ nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>t :Ttoggle<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>r :Rg<CR>
+
+"copy name of current file into unnamedplus
+nnoremap <leader>cp :let @+ = expand("%")<CR>
