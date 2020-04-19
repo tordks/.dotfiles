@@ -1,6 +1,8 @@
 
 # TODO: CLEAN and ORGANIZE
 
+alias xo=xdg-open
+
 # keyboard settings
 # remove caps and set it to ctrl
 setxkbmap -option ctrl:nocaps
