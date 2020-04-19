@@ -36,5 +36,8 @@ active.indicator=>
 #include /usr/share/taskwarrior/dark-gray-blue-256.theme
 #include /usr/share/taskwarrior/solarized-dark-256.theme
 #include /usr/share/taskwarrior/solarized-light-256.theme
-#include /usr/share/taskwarrior/no-color.theme
+include /usr/share/taskwarrior/no-color.theme
 
+context.work=+work
+context=home
+context.home=-work
