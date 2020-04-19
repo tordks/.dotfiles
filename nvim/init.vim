@@ -31,7 +31,7 @@ set number                  " display line numbers
 set ruler                   " show the cursor position with a ruler
 set showcmd                 " display incomplete commands
 set showmatch               " show matching braces
-set spelllang=en,no
+set spelllang=en
 set t_Co=256                " 256 colors
 set visualbell              " No sounds
 set wildmenu                " visual autocomplete for command menu

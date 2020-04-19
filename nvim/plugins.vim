@@ -29,8 +29,11 @@ Plug 'jiangmiao/auto-pairs' " automatically pair paranthesis
 "
 "
 " Syntax and language integration
-Plug 'plasticboy/vim-markdown'
 Plug 'lervag/vimtex'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+"TODO: vim-markdown vs vim-pandoc and vim-pandoc-syntax
+"Plug 'plasticboy/vim-markdown'
 "Plug 'octol/vim-cpp-enhanced-highlight'
 "Plug 'Shougo/echodoc.vim'
 
