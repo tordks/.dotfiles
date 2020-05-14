@@ -17,5 +17,10 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \ 'cpp': ['clangtidy'],
 \ 'c': ['clangtidy'],
-\ 'python': ['yapf', 'isort', ]
+\ 'python': ['yapf', 'isort']
 \}
+
+
+" === YAPF ===
+let g:yapf_style = "pep8"
+"nnoremap <leader>y :Yapf<cr>

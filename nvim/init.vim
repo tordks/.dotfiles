@@ -202,11 +202,6 @@ highlight link EchoDocFloat Pmenu
 nnoremap <leader>u :GundoToggle<CR>
 
 
-" === YAPF ===
-let g:yapf_style = "pep8"
-:nnoremap <leader>y :Yapf<cr>
-
-
 " === Tabular ===
 vnoremap <leader>t :Tabularize /
 
