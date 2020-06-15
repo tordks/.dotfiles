@@ -36,9 +36,10 @@ antigen theme candy
 # Tell Antigen that you're done.
 antigen apply
 
-# TODO: split aliases and settings into their own file
-source $ZSH/plugins/fasd/fasd.plugin.zsh
+#source "$ZSH/plugins/fasd/fasd.plugin.zsh" # TODO: for some reason ZSH is empty
+source "/home/tordks/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/fasd/fasd.plugin.zsh"
 
+# TODO: split aliases and settings into their own file
 #Set by fasd by default
 #alias a='fasd -a'        # any
 #alias s='fasd -si'       # show / search / select

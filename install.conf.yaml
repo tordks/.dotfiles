@@ -48,42 +48,48 @@
     - [sudo apt install -y fasd silversearcher-ag]
     - [chsh -s $(which zsh), Enter password to set zsh as default shell]
     - [curl -L git.io/antigen > zsh/antigen.zsh, Get newest antigen]
-    - [source ~/.zshrc && ./install_tmux.sh, Install tmux] # TODO: Installing plugins currently not working...
+      #- [source ~/.zshrc && ./install_tmux.sh, Install tmux] # TODO: Installing plugins currently not working...
+
+# xcape
+- shell:
+    - [sudo apt install -y git gcc make pkg-config libx11-dev libxtst-dev libxi-dev]
+    - [cd ~/Downloads && git clone https://github.com/alols/xcape.git]
+    - [cd ~/Downloads/xcape && make && sudo make install]
+    - [rm -rf ~/Downloads/xcape]
+
 
 # TODO: clean these. got them from pyenv wiki: https://github.com/pyenv/pyenv/wiki/common-build-problems
 # TODO: this originated from the pip installed pandas lacking bz2
 # Common dependencies for building python
 - shell:
-    - [sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
-libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-xz-utils tk-dev libffi-dev liblzma-dev python-openssl git, Install pyenv prerequisites]
+    - [sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git, Install pyenv prerequisites]
 
-# pyenv
+## pyenv
 - shell:
     - command: curl https://pyenv.run | bash
       description: Install python version and venv manager,
       stderr: true
-      #- [sudo apt-get install libffi-dev, Install Cpython dependency]
+    - [sudo apt-get install libffi-dev, Install Cpython dependency]
     - command: source ~/.zshrc && pyenv install 3.7.7
       description: Install python 3.7.7
       stderr: true
     - [source ~/.zshrc && pyenv global 3.7.7, Set python 3.7.7 as global python]
-
-# nvim
-# TODO: make a requirements.txt for the neovim env
+#
+## nvim
+## TODO: make a requirements.txt for the neovim env
 - shell:
     - [sudo apt install neovim, Install neovim]
-    - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --ceate-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
+    - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
     - [source ~/.zshrc && pyenv virtualenv 3.7.7 neovim3, Set up default neovim venv]
     - [source ~/.zshrc && pyenv activate neovim3 && pip install --upgrade pip]
     - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim jedi flake8 pylint]
     - [source ~/.zshrc && nvim +PlugInstall +qall, Install nvim plugins, press enter]
 
-# taskwarrior + timewarrior
-# TODO: find taskwarrior folder automatically
-- shell:
-    - [sudo apt install taskwarrior, Install taskwarrior]
-    - [sudo apt install taskwarrior, Install timewarrior]
-      #- [wget "https://raw.githubusercontent.com/GothenburgBitFactory/timewarrior/dev/ext/on-modify.timewarrior" -P ~/Dropbox/taskwarrior/hooks, Download taskwarrior hook for timewarrior]
-      #- [chmod +x ~/Dropbox/taskwarrior/hooks/on-modify.timewarrior, Make timewarrior hook executable]
-    - [source ~/.zshrc && pip install tasklib, Install taskwarrior python bindings]
+## taskwarrior + timewarrior
+## TODO: find taskwarrior folder automatically
+#- shell:
+#    - [sudo apt install taskwarrior, Install taskwarrior]
+#    - [sudo apt install taskwarrior, Install timewarrior]
+#      #- [wget "https://raw.githubusercontent.com/GothenburgBitFactory/timewarrior/dev/ext/on-modify.timewarrior" -P ~/Dropbox/taskwarrior/hooks, Download taskwarrior hook for timewarrior]
+#      #- [chmod +x ~/Dropbox/taskwarrior/hooks/on-modify.timewarrior, Make timewarrior hook executable]
+#    - [source ~/.zshrc && pip install tasklib, Install taskwarrior python bindings]
