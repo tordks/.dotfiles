@@ -56,9 +56,9 @@ CONDA_AUTO_ACTIVATE_BASE=false
 
 
 # Pyenv
-export PATH="/home/tordks/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PATH="/home/tordks/.pyenv/bin:$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 
 #zprof
