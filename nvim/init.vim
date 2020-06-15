@@ -168,6 +168,8 @@ function! s:fzf_statusline()
 endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
 " Hide statusline of containing buffer
 augroup fzf
   autocmd!
