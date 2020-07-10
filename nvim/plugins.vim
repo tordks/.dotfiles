@@ -25,7 +25,7 @@ Plug 'w0rp/ale' " vim linter and formatter (can wrap multiple formatters)
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
-Plug 'jiangmiao/auto-pairs' " automatically pair paranthesis
+"Plug 'jiangmiao/auto-pairs' " automatically pair paranthesis
 "
 "
 " Syntax and language integration
