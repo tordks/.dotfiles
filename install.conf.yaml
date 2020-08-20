@@ -82,7 +82,7 @@
     - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
     - [source ~/.zshrc && pyenv virtualenv 3.7.7 neovim3, Set up default neovim venv]
     - [source ~/.zshrc && pyenv activate neovim3 && pip install --upgrade pip]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim jedi flake8 pylint]
+    - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim jedi flake8 flake8-black isort pylint]
     - [source ~/.zshrc && nvim +PlugInstall +qall, Install nvim plugins, press enter]
 
 ## taskwarrior + timewarrior

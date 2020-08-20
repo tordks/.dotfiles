@@ -21,7 +21,7 @@ Plug 'honza/vim-snippets'
 " Autocompletion and autoformatting
 Plug 'mindriot101/vim-yapf'  " automatic python code formatter
 Plug 'fisadev/vim-isort' " auto sort python imports
-Plug 'w0rp/ale' " vim linter and formatter (can wrap multiple formatters)
+Plug 'dense-analysis/ale' " vim linter and formatter (can wrap multiple formatters)
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
