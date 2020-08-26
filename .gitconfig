@@ -66,6 +66,7 @@
     quotepath = false
     # restore default pager behavior (needed because we manually set $LESS)
     pager = "less -FRX"
+	excludesfile = /home/tordks/.gitignore
 
 [diff]
     # detect renamed files and show only actual differences between them
