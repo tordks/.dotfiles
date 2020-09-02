@@ -25,6 +25,7 @@ source ~/.zsh/from_bashrc.zsh
 #fuzzy file completion
 eval "$(fasd --init auto)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_ALT_C_COMMAND="fd --type d . $HOME"
 
 # rust stuff
 # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

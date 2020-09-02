@@ -148,6 +148,8 @@ let g:fzf_colors =
 nmap <Leader>f :GFiles<CR>
 " search for all files
 nmap <Leader>F :Files<CR>
+" search for all files from home
+nmap <Leader>H :Files $HOME<CR>
 " search through buffers
 nmap <Leader>b :Buffers<CR>
 " search through history
@@ -199,6 +201,8 @@ let g:echodoc#type = 'floating'
 highlight link EchoDocFloat Pmenu
 
 
+" === Vimtex ===
+let g:tex_flavor = 'latex'
 
 " === Gundo ===
 nnoremap <leader>u :GundoToggle<CR>

@@ -32,6 +32,8 @@
 
     # PRETTY LOGS
 
+    l = log --all --graph --decorate --oneline
+
     # compact log with branch names etc.
     ls = !git log --color=always --decorate --graph --date=relative \
     --format=tformat:'%C(auto)%h%C(reset) -%C(auto)%d%C(reset) %s %C(dim)- %an, %ad%C(reset)'
