@@ -20,7 +20,7 @@
     ~/.taskrc: .taskrc
     #~/.timewarrior/: .timewarrior.cfg
     ~/.gitconfig: .gitconfig
-    ~/.gitignore: .global_gitignore
+    ~/.global_gitignore: .global_gitignore
     ~/.bashrc: bash/.bashrc
     ~/.bash_profile: bash/.bash_profile
 
