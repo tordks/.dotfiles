@@ -70,17 +70,17 @@
       description: Install python version and venv manager,
       stderr: true
     - [sudo apt-get install libffi-dev, Install Cpython dependency]
-    - command: source ~/.zshrc && pyenv install 3.7.7
-      description: Install python 3.7.7
+    - command: source ~/.zshrc && pyenv install 3.8.6
+      description: Install python 3.8.6
       stderr: true
-    - [source ~/.zshrc && pyenv global 3.7.7, Set python 3.7.7 as global python]
+    - [source ~/.zshrc && pyenv global 3.8.6, Set python 3.8.6 as global python]
 #
 ## nvim
 ## TODO: make a requirements.txt for the neovim env
 - shell:
     - [sudo apt install neovim, Install neovim]
     - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
-    - [source ~/.zshrc && pyenv virtualenv 3.7.7 neovim3, Set up default neovim venv]
+    - [source ~/.zshrc && pyenv virtualenv 3.8.6 neovim3, Set up default neovim venv]
     - [source ~/.zshrc && pyenv activate neovim3 && pip install --upgrade pip]
     - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim jedi flake8 flake8-black isort pylint]
     - [source ~/.zshrc && nvim +PlugInstall +qall, Install nvim plugins, press enter]
