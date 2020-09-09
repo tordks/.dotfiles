@@ -1,4 +1,5 @@
 # source ~/.zsh/env_work.zsh
+alias python=python3
 
 export EDITOR=nvim
 
