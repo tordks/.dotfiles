@@ -31,7 +31,7 @@ let g:ale_python_isort_use_global = 1
 
 
 
-let g:ale_python_black_options="--line-length=80"
+let g:ale_python_black_options="--line-length=80 -S"
 
 " make sure linters and fixers conform to black
 let g:ale_python_flake8_options="--extend-ignore=E116,E203,W503 --max-line-length=80"
