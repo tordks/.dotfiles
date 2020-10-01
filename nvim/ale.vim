@@ -10,8 +10,9 @@ nnoremap <leader>af :ALEFix<CR>
 let g:ale_linters = {
 \ 'cpp': ['ccls', 'clang'],
 \ 'c': ['ccls', 'clang'],
-\ 'python': ['flake8']
+\ 'python': ['pyls', 'flake8']
 \}
+
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -22,6 +23,8 @@ let g:ale_fixers = {
 
 let g:ale_python_flake8_executable = expand('~/.pyenv/versions/neovim3/bin/flake8')
 let g:ale_python_flake8_use_global = 1
+let g:ale_python_isort_executable = expand('~/.pyenv/versions/neovim3/bin/pyls')
+let g:ale_python_isort_use_global = 1
 let g:ale_python_black_executable = expand('~/.pyenv/versions/neovim3/bin/black')
 let g:ale_python_black_use_global = 1
 let g:ale_python_isort_executable = expand('~/.pyenv/versions/neovim3/bin/isort')

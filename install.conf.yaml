@@ -83,7 +83,7 @@
     - [source ~/.zshrc && pyenv virtualenv 3.8.5 neovim3, Set up default neovim venv]
     - [source ~/.zshrc && pyenv activate neovim3 && pip install --upgrade pip]
     - [source ~/.zshrc && pyenv activate neovim3 && pip install wheel]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim jedi flake8 flake8-black isort pylint]
+    - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim jedi python-language-server flake8 flake8-black isort pylint]
     - [source ~/.zshrc && nvim +PlugInstall +qall, Install nvim plugins, press enter]
 
 ## taskwarrior + timewarrior
