@@ -80,10 +80,10 @@
 - shell:
     - [sudo apt install neovim, Install neovim]
     - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
-    - [source ~/.zshrc && pyenv virtualenv 3.8.5 neovim3, Set up default neovim venv]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install --upgrade pip]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install wheel]
-    - [source ~/.zshrc && pyenv activate neovim3 && pip install neovim jedi python-language-server flake8 flake8-black isort pylint]
+    - [source ~/.zshrc && pyenv virtualenv 3.8.5 neovim, Set up default neovim venv]
+    - [source ~/.zshrc && pyenv activate neovim && pip install --upgrade pip]
+    - [source ~/.zshrc && pyenv activate neovim && pip install wheel]
+    - [source ~/.zshrc && pyenv activate neovim && pip install neovim jedi python-language-server flake8 flake8-black isort pylint sqlint]
     - [source ~/.zshrc && nvim +PlugInstall +qall, Install nvim plugins, press enter]
 
 ## taskwarrior + timewarrior

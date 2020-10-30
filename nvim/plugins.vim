@@ -19,7 +19,7 @@ Plug 'honza/vim-snippets'
 
 
 " Autocompletion and autoformatting
-Plug 'mindriot101/vim-yapf'  " automatic python code formatter
+" Plug 'mindriot101/vim-yapf'  " automatic python code formatter
 Plug 'fisadev/vim-isort' " auto sort python imports
 Plug 'dense-analysis/ale' " vim linter and formatter (can wrap multiple formatters)
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -33,7 +33,7 @@ Plug 'lervag/vimtex'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 "TODO: vim-markdown vs vim-pandoc and vim-pandoc-syntax
-"Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 "Plug 'octol/vim-cpp-enhanced-highlight'
 "Plug 'Shougo/echodoc.vim'
 

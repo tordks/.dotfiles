@@ -6,8 +6,8 @@
 "       * Table mode
 "       * Indent guides
 
-
-let g:python3_host_prog = '/home/tordks/.pyenv/versions/neovim3/bin/python'
+" let g:python3_host_prog = '/home/tordks/.pyenv/versions/neovim3/bin/python'
+ let g:python3_host_prog = '/home/tordks/anaconda3/envs/neovim/bin/python'
 
 source ~/.config/nvim/plugins.vim
 
