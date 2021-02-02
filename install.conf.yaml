@@ -74,6 +74,7 @@
       description: Install python 3.8.5
       stderr: true
     - [source ~/.zshrc && pyenv global 3.8.5, Set python 3.8.5 as global python]
+    - [git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv, Install pyenv-virtualenv]
 #
 ## nvim
 ## TODO: make a requirements.txt for the neovim env
