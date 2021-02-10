@@ -24,8 +24,8 @@ let g:ale_fixers = {
 
 let g:ale_python_flake8_executable = expand('~/.pyenv/versions/neovim/bin/flake8')
 let g:ale_python_flake8_use_global = 1
-let g:ale_python_isort_executable = expand('~/.pyenv/versions/neovim/bin/pyls')
-let g:ale_python_isort_use_global = 1
+let g:ale_python_pyls_executable = expand('~/.pyenv/versions/neovim/bin/pyls')
+let g:ale_python_pyls_use_global = 1
 let g:ale_python_black_executable = expand('~/.pyenv/versions/neovim/bin/black')
 let g:ale_python_black_use_global = 1
 let g:ale_python_isort_executable = expand('~/.pyenv/versions/neovim/bin/isort')
