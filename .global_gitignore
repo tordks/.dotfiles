@@ -1,5 +1,12 @@
+# vscode
+.vscode
+
+# testing
+.coverage
+coverage.xml
+.tox
+
 # configs
-*pyproject.toml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
