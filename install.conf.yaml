@@ -66,26 +66,12 @@
 
 ## pyenv
 - shell:
-    - command: curl https://pyenv.run | bash
-      description: Install python version and venv manager,
+    - source ~/.zshrc && bash install_pyenv.sh
       stderr: true
-    - [sudo apt-get install libffi-dev, Install Cpython dependency]
-    - command: source ~/.zshrc && pyenv install 3.8.5
-      description: Install python 3.8.5
-      stderr: true
-    - [source ~/.zshrc && pyenv global 3.8.5, Set python 3.8.5 as global python]
-    - [git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv, Install pyenv-virtualenv]
-#
 ## nvim
 ## TODO: make a requirements.txt for the neovim env
 - shell:
-    - [sudo apt install neovim, Install neovim]
-    - [curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim, Get vim-plug]
-    - [source ~/.zshrc && pyenv virtualenv 3.8.5 neovim, Set up default neovim venv]
-    - [source ~/.zshrc && pyenv activate neovim && pip install --upgrade pip]
-    - [source ~/.zshrc && pyenv activate neovim && pip install wheel]
-    - [source ~/.zshrc && pyenv activate neovim && pip install neovim jedi python-language-server flake8 flake8-black isort pylint sqlint]
-    - [source ~/.zshrc && nvim +PlugInstall +qall, Install nvim plugins, press enter]
+    - [source ~/.zshrc && bash setup_nvim.sh, setup neovim]
 
 ## taskwarrior + timewarrior
 ## TODO: find taskwarrior folder automatically
