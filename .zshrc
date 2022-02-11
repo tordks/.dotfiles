@@ -29,6 +29,10 @@ alias 'mkdir=mkdir -p'
 alias 'cal=ncal -b' # Weeks start on Monday
 alias 'dmesg=dmesg --ctime'
 
+alias h='history'
+alias hs='history | grep'
+alias hsi='history | grep -i'
+
 # TODO: Don't set keyboard settings if on remote
 # keyboard settings
 # remove caps and set it to ctrl
@@ -101,10 +105,17 @@ if [[ "$TERM" != "dumb" ]]; then
 fi
 
 # let Ctrl-O open ranger, a console file manager (http://nongnu.org/ranger/):
+# TODO: ctrl-o taken by copybuffer
 zle -N ranger
 bindkey '^o' ranger
 
 # FUNCTIONS
+
+# use rsync as copy
+cpv() {
+    rsync -pogbr -hhh --backup-dir="/tmp/rsync-${USERNAME}" -e /dev/null --progress "$@"
+}
+compdef _files cpv
 
 # Quick find
 qf() {
@@ -169,6 +180,7 @@ eval "$(fasd --init auto)"
 export FZF_ALT_C_COMMAND="fd --type d . $HOME"
 
 # TODO: should not always be here.
+# TODO: handle by zsh plugin?
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
