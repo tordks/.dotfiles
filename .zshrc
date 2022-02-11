@@ -1,7 +1,7 @@
-
 # PLUGINS
 source ~/.zsh/antigen.zsh
-source ~/.zsh/plugins.zsh
+antigen init ~/.zsh/.antigenrc
+
 
 # COMMAND ALIASES
 #
@@ -9,6 +9,7 @@ source ~/.zsh/plugins.zsh
 alias sudo='sudo '
 alias xo=xdg-open
 alias python=python3
+
 compdef g='git'
 # Aliasing 'g' to 'git' wouldn't be useful without autocompletion.
 #complete -o default -o nospace -F _git g
@@ -54,6 +55,16 @@ compinit
 # packages)
 zstyle ':completion:*' use-cache c n
 zstyle ':completion:*' cache-path ~/.zsh/cache
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
 
 export EDITOR=nvim
 
