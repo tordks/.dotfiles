@@ -66,8 +66,8 @@
 
 ## pyenv
 - shell:
-    - source ~/.zshrc && bash install_pyenv.sh
-      stderr: true
+   - [source ~/.zshrc && bash install_pyenv.sh]
+   - stderr: true
 ## nvim
 ## TODO: make a requirements.txt for the neovim env
 - shell:

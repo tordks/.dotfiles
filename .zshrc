@@ -1,7 +1,7 @@
-#zmodload zsh/zprof
 
-source ~/.zsh/antigen_config.zsh
-
+# PLUGINS
+source ~/.zsh/antigen.zsh
+source ~/.zsh/plugins.zsh
 
 # COMMAND ALIASES
 #
@@ -106,16 +106,10 @@ fi
 
 # let Ctrl-O open ranger, a console file manager (http://nongnu.org/ranger/):
 # TODO: ctrl-o taken by copybuffer
-zle -N ranger
-bindkey '^o' ranger
+# zle -N ranger
+# bindkey '^o' ranger
 
 # FUNCTIONS
-
-# use rsync as copy
-cpv() {
-    rsync -pogbr -hhh --backup-dir="/tmp/rsync-${USERNAME}" -e /dev/null --progress "$@"
-}
-compdef _files cpv
 
 # Quick find
 qf() {
