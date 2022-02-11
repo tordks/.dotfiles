@@ -1,57 +1,14 @@
 #zmodload zsh/zprof
 
-# TODO: inline comments for cleaner setup
-alias xo=xdg-open
-
-# TODO: Don't set keyboard settings if on remote
-# keyboard settings
-# remove caps and set it to ctrl
-setxkbmap -option ctrl:nocaps
-# enable caps by double pressing shift
-setxkbmap -option shift:both_capslock
-xcape -e 'Control_L=Escape'
-
-alias python=python3
-export EDITOR=nvim
-
 source ~/.zsh/antigen_config.zsh
 
-# xargs but zargs
-autoload -U zargs
 
-# Calculator
-autoload zcalc
-
-# Line editor
-autoload zed
-
-# Renaming with globbing
-autoload zmv
-
-# Completion system
-autoload -Uz compinit
-compinit
-
-## Use cache
-# Some functions, like _apt and _dpkg, are very slow. You can use a cache in
-# order to proxy the list of results (like the list of available debian
-# packages)
-zstyle ':completion:*' use-cache c n
-zstyle ':completion:*' cache-path ~/.zsh/cache
-
-# Zsh settings for history
-HISTORY_IGNORE="(ls|[bf]g|exit|reset|clear|cd|cd ..|cd..)"
-HISTSIZE=250000
-HISTFILE=~/.zsh/.zsh_history
-SAVEHIST=1000000
-setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
-
-
-# Short command aliases
+# COMMAND ALIASES
+#
+# let aliases work after sudo (see http://askubuntu.com/a/22043)
+alias sudo='sudo '
+alias xo=xdg-open
+alias python=python3
 compdef g='git'
 # Aliasing 'g' to 'git' wouldn't be useful without autocompletion.
 #complete -o default -o nospace -F _git g
@@ -59,16 +16,7 @@ compdef g='git'
 alias L='less'
 
 alias 'l=ls -l'
-alias 'la=ls -FA'
 alias 'll=ls -Flah'
-alias 'llh=ls -l --si'
-alias 'lq=ls -Q'
-alias 'lr=ls -R'
-alias 'lrs=ls -lrS'
-alias 'lrt=ls -lrt'
-alias 'lrta=ls -lrtA'
-alias 'lrth=ls -lrth --si'
-alias 'lrtha=ls -lrthA --si'
 alias 'grep=grep --colour=always --line-number --devices=skip'
 
 # Play safe!
@@ -81,18 +29,47 @@ alias 'mkdir=mkdir -p'
 alias 'cal=ncal -b' # Weeks start on Monday
 alias 'dmesg=dmesg --ctime'
 
-# Typing errors...
-alias 'cd..= cd ..'
+# TODO: Don't set keyboard settings if on remote
+# keyboard settings
+# remove caps and set it to ctrl
+setxkbmap -option ctrl:nocaps
+# enable caps by double pressing shift
+setxkbmap -option shift:both_capslock
+xcape -e 'Control_L=Escape'
+
+# Renaming with globbing
+autoload zmv
+
+# Completion system
+autoload -Uz compinit
+compinit
+
+# Use cache
+# Some functions, like _apt and _dpkg, are very slow. You can use a cache in
+# order to proxy the list of results (like the list of available debian
+# packages)
+zstyle ':completion:*' use-cache c n
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+export EDITOR=nvim
+
+HISTORY_IGNORE="(ls|[bf]g|exit|reset|clear|cd|cd ..|cd..)"
+HISTSIZE=250000
+HISTFILE=~/.zsh/.zsh_history
+SAVEHIST=1000000
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
 
 # Say how long a command took, if it took more than 30 seconds
 export REPORTTIME=30
 
 # Prompts for confirmation after 'rm *' etc
-# Helps avoid mistakes like 'rm * o' when 'rm *.o' was intended
 setopt RM_STAR_WAIT
-
 export TIME_STYLE="long-iso"
-
+#
 # Commas in ls, du, df output
 export BLOCK_SIZE="'1"
 
@@ -108,7 +85,13 @@ if [[ -x $(which less 2> /dev/null) ]]; then
     LESSOPEN="| lesspipe %s"
     export LESSOPEN
     fi
+    fi
+
+# list directories before files (if installed version of ls allows this)
+if man ls | grep group-directories-first >&/dev/null; then
+    alias ls='ls --color=auto --group-directories-first'
 fi
+
 # Enable color support of ls
 if [[ "$TERM" != "dumb" ]]; then
     if [[ -x `which dircolors 2> /dev/null` ]]; then
@@ -116,6 +99,12 @@ if [[ "$TERM" != "dumb" ]]; then
     alias 'ls=ls --color=auto'
     fi
 fi
+
+# let Ctrl-O open ranger, a console file manager (http://nongnu.org/ranger/):
+zle -N ranger
+bindkey '^o' ranger
+
+# FUNCTIONS
 
 # Quick find
 qf() {
@@ -148,9 +137,6 @@ resolve-alias() {
 rationalise-dot() {
     # Auto-expand "..." to "../..", "...." to "../../.." etc.
     # It skips certain commands (git, tig, p4).
-    #
-    # resolve-alias is defined in a separate function.
-
     local MATCH # keep the regex match from leaking to the environment.
 
     # Skip pasted text.
@@ -173,34 +159,14 @@ bindkey . rationalise-dot
 bindkey -M isearch . self-insert 2>/dev/null
 
 
-# list directories before files (if installed version of ls allows this)
-if man ls | grep group-directories-first >&/dev/null; then
-    alias ls='ls --color=auto --group-directories-first'
-fi
-#
-# let Ctrl-O open ranger, a console file manager (http://nongnu.org/ranger/):
-zle -N ranger
-bindkey '^o' ranger
+# OTHER
 
-# let aliases work after sudo (see http://askubuntu.com/a/22043)
-alias sudo='sudo '
-
-# this wrapper lets bash automatically change current directory to the last one
-# visited inside ranger.  (Use "cd -" to return to the original directory.)
-function ranger {
-    tempfile="$(mktemp)"
-    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-    test -f "$tempfile" && cd -- "$(cat "$tempfile")"
-    rm -f -- "$tempfile"
-}
+export XDG_CONFIG_HOME=~/.config
 
 #fuzzy file completion
 eval "$(fasd --init auto)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_ALT_C_COMMAND="fd --type d . $HOME"
-
-export XDG_CONFIG_HOME=~/.config
-
 
 # TODO: should not always be here.
 # Pyenv
