@@ -49,18 +49,3 @@ source "/home/tordks/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/fasd/fasd.p
 #alias sf='fasd -sif'     # interactive file selection
 #alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 #alias zz='fasd_cd -d -i' # cd with interactive selection
-
-
-# TODO: look into these
-## View recent f files
-#v() {
-#    local file
-#    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "${file}" || return 1
-#}
-
-## cd into the directory containing a recently used file
- #vd() {
-    #local dir
-    #local file
-    #file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && dir=$(dirname "$file") && cd "$dir"
-#}
