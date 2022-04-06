@@ -73,6 +73,7 @@
 [diff]
     # detect renamed files and show only actual differences between them
     renames = copies
+    tool = vimdiff
 
 [merge]
     # in case of merge conflict also show how common ancestor looked like
