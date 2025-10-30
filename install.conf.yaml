@@ -1,3 +1,6 @@
+# =============================================================================
+# Configuration Defaults
+# =============================================================================
 - defaults:
     link:
         create: true
@@ -9,75 +12,76 @@
         stdout: true
         stderr: true
 
-- clean: ['~', '~/.zsh', '~/.config/nvim']
+# =============================================================================
+# Symlinks
+# =============================================================================
+- clean: ['~', '~/.config/nvim']
 
 - link:
+    # Neovim configuration
     ~/.config/nvim/: nvim/*
-    ~/.zsh/: zsh/.*
-    ~/.zsh/: zsh/*
+
+    # Zsh configuration (consolidated into single .zshrc file)
     ~/.zshrc: .zshrc
+    ~/.zsh_plugins.txt: .zsh_plugins.txt
+
+    # Tmux and Git configuration
     ~/.tmux.conf: .tmux.conf
-    ~/.taskrc: .taskrc
-    #~/.timewarrior/: .timewarrior.cfg
     ~/.gitconfig: .gitconfig
     ~/.global_gitignore: .global_gitignore
-    ~/.bashrc: bash/.bashrc
-    ~/.bash_profile: bash/.bash_profile
 
+    # Starship prompt configuration
+    ~/.config/starship.toml: starship.toml
 
 - create:
     - ~/.vim/undo-history
 
-# TODO: move timewarrior folder to Dropbox
-# TODO: probably missing some dependencies
-# TODO: currently need to source .zshrc for all pip installs etc. due to pyenv.
-#       being also installed in this script
-# TODO: should add separate instlal scripts for separate toole? eg. like done
-#       for tmux?
-
-# set up dotbot
+# =============================================================================
+# Dotbot Setup
+# =============================================================================
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
-# update and upgrade
+# =============================================================================
+# Git Configuration (Personal)
+# =============================================================================
 - shell:
-    - [sudo apt -y update && sudo apt -y upgrade]
+    - |
+      # Create .gitconfig.local if it doesn't exist
+      if [ ! -f ~/.gitconfig.local ]; then
+          echo "Setting up your Git identity..."
+          read -p "Enter your name: " git_name
+          read -p "Enter your email: " git_email
+          cat > ~/.gitconfig.local << EOF
+      # Local Git Configuration (not tracked in dotfiles repo)
+      # Contains personal information like email and name
 
-# Set up shell
+      [user]
+      	name = $git_name
+      	email = $git_email
+      EOF
+          echo "✓ Created ~/.gitconfig.local"
+      else
+          echo "✓ ~/.gitconfig.local already exists"
+      fi
+
+# =============================================================================
+# Shell Tools (zsh, antidote, zoxide, tmux, fzf)
+# =============================================================================
 - shell:
-    - [sudo apt install -y zsh fasd fzf silversearcher-ag]
-    - [chsh -s $(which zsh), Enter password to set zsh as default shell]
-    - [curl -L git.io/antigen > zsh/antigen.zsh, Get newest antigen]
+    - [sudo apt install -y zsh ripgrep fd-find]
+    - ['[ -L ~/.local/bin/fd ] || ln -s $(which fdfind) ~/.local/bin/fd', 'Create fd symlink (fdfind -> fd)']
+    - ['[ "$SHELL" = "$(which zsh)" ] || chsh -s $(which zsh)', 'Set zsh as default shell (skip if already set)']
+    - ['[ -d ${ZDOTDIR:-~}/.antidote ] || git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote', 'Install antidote']
+    - ['[ -x ~/.local/bin/zoxide ] || curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash', 'Install zoxide']
+    - [bash install_fzf.sh, Install latest fzf binary]
+    - ['[ -x ~/.local/bin/starship ] || curl -sS https://starship.rs/install.sh | sh -s -- -y -b ~/.local/bin', 'Install Starship prompt']
+    - ['[ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm', 'Install TPM (tmux plugin manager)']
       #- [source ~/.zshrc && ./install_tmux.sh, Install tmux] # TODO: Installing plugins currently not working...
 
-# xcape
+# =============================================================================
+# Nneovim
+# =============================================================================
 - shell:
-    - [sudo apt install -y git gcc make pkg-config libx11-dev libxtst-dev libxi-dev]
-    - [cd ~/Downloads && git clone https://github.com/alols/xcape.git]
-    - [cd ~/Downloads/xcape && make && sudo make install]
-    - [rm -rf ~/Downloads/xcape]
+    - [bash setup_nvim.sh, setup neovim]
 
-
-# TODO: clean these. got them from pyenv wiki: https://github.com/pyenv/pyenv/wiki/common-build-problems
-# TODO: this originated from the pip installed pandas lacking bz2
-# Common dependencies for building python
-- shell:
-    - [sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git, Install pyenv prerequisites]
-
-## pyenv
-- shell:
-    - source ~/.zshrc && bash install_pyenv.sh
-      stderr: true
-## nvim
-## TODO: make a requirements.txt for the neovim env
-- shell:
-    - [source ~/.zshrc && bash setup_nvim.sh, setup neovim]
-
-## taskwarrior + timewarrior
-## TODO: find taskwarrior folder automatically
-- shell:
-    - [sudo apt install taskwarrior, Install taskwarrior]
-#    - [sudo apt install timewarrior, Install timewarrior]
-#      #- [wget "https://raw.githubusercontent.com/GothenburgBitFactory/timewarrior/dev/ext/on-modify.timewarrior" -P ~/Dropbox/taskwarrior/hooks, Download taskwarrior hook for timewarrior]
-#      #- [chmod +x ~/Dropbox/taskwarrior/hooks/on-modify.timewarrior, Make timewarrior hook executable]
-    - [source ~/.zshrc && pip install tasklib, Install taskwarrior python bindings]

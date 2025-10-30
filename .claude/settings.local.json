@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(cwf:read-constitution)",
+      "Bash(nvim:*)",
+      "Skill(cwf:claude-workflow)",
+      "Bash(find:*)"
+    ]
+  }
+}

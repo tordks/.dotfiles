@@ -51,6 +51,20 @@
     rf = !GIT_PAGER='less -REXS' git log --walk-reflogs --format='%C(dim)%<(21,trunc)%ci%x08%x08%x08%x08%x08 %C(reset)%gd%C(reset): %C(auto)%h%C(reset) %gs %C(dim)- %<(33,trunc)%s%C(reset)'
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
+    # UTILITIES
+    recent = branch --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
+    undo = reset --soft HEAD^
+    amend = commit --amend --no-edit
+
+
+[init]
+	defaultBranch = main
+
+[maintenance]
+	auto = true
+
+[feature]
+	manyFiles = true
 
 [color]
     ui = auto
@@ -69,6 +83,7 @@
     # restore default pager behavior (needed because we manually set $LESS)
     pager = "less -FRX"
 	excludesfile = /home/tordks/.global_gitignore
+	fsmonitor = true
 
 [diff]
     # detect renamed files and show only actual differences between them
@@ -90,6 +105,8 @@
 [rebase]
     # automatically process "fixup!" commits when rebasing interactively
 autosquash = true
-[user]
-	email = sorensen@stcorp.no
-	name = Tord Kriznik Sørensen
+
+# Include local config for personal settings (email, name, etc.)
+# This file is not tracked in git
+[include]
+	path = ~/.gitconfig.local

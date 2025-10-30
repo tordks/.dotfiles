@@ -1,0 +1,24 @@
+# Zsh Plugin Declarations - Antidote Plugin Manager
+# This file contains the list of plugins to be managed by Antidote, a lightweight
+# and performant zsh plugin manager written in zsh.
+#
+# FORMAT: repo/name [path:subpath] [kind:type]
+#   - repo/name    : GitHub repository (user/repo)
+#   - path:subpath : Load a specific subdirectory instead of the whole repo
+#                    Examples: path:lib, path:plugins/git, path:shell
+#   - kind:type    : Specify plugin type (default: plugin)
+#                    - fpath: for completion/function directories
+#                    - snippet: for shell snippets
+#
+# See: https://github.com/mattmc3/antidote for more information
+
+jeffreytse/zsh-vi-mode
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+djui/alias-tips
+z-shell/F-Sy-H
+junegunn/fzf path:shell/completion.zsh
+junegunn/fzf path:shell/key-bindings.zsh
+Aloxaf/fzf-tab
+wfxr/forgit
+jsahlen/tmux-vim-integration.plugin.zsh
