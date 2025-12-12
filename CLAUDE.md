@@ -8,36 +8,12 @@ This is a **personal dotfiles repository** for managing development environment 
 
 **Key principle**: Changes to this repository directly affect the user's daily development environment. Always test thoroughly and maintain backward compatibility where possible.
 
-## Installation & Testing
+## Installation
 
-### Initial Setup
 ```bash
-# Clone and install
 git clone https://github.com/tordks/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install
-```
-
-### Testing Changes
-```bash
-# Test in Docker (preferred for major changes)
-docker build -t dotfiles-test .
-docker run -it dotfiles-test
-
-# Test installation script
-./install
-
-# Reload shell to test zsh changes
-exec zsh
-# Or just source the config
-source ~/.zshrc
-
-# Test neovim changes
-nvim
-# Check plugin status with :Lazy
-
-# Test tmux changes
-tmux source-file ~/.tmux.conf
 ```
 
 ## Architecture & File Organization
@@ -185,9 +161,6 @@ If you see "command not found: compdef" errors, the completion system isn't init
 FZF is loaded via Antidote plugin manager. The configuration variable `FZF_ALT_C_COMMAND` is set in `.zshrc` to use `fd` for directory searching.
 
 
-### Docker Testing
-The Dockerfile provides a clean Ubuntu environment for testing. Note that it installs from unstable PPA for Neovim 0.11+.
-
 ## Making Changes
 
 ### Before Editing
@@ -197,8 +170,7 @@ The Dockerfile provides a clean Ubuntu environment for testing. Note that it ins
 
 ### After Editing
 1. Test in a new shell/tmux session (don't break your current one!)
-2. For major changes, test in Docker first
-3. Verify all key features work:
+2. Verify all key features work:
    - Zsh completions (`git <TAB>`)
    - FZF bindings (`Ctrl+R`, `Ctrl+T`, `Alt+C`)
    - Tmux pane navigation with vim awareness

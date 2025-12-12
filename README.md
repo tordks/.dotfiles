@@ -108,30 +108,30 @@ Two patterns: `git <alias>` for standard commands, short aliases for fzf-powered
 
 | Alias | Command | Description |
 |-------|---------|-------------|
-| `git s` | `status --short` | Compact status |
-| `git st` | `status` | Full status |
-| `git co` | `checkout` | Checkout |
-| `git br` | `branch` | Branch |
-| `git ci` | `commit --verbose` | Commit with diff preview |
-| `git ap` | `add --patch` | Stage hunks interactively |
-| `git au` | `add --update` | Stage tracked files |
-| `git d` | `diff` | Diff with color |
-| `git wd` | `diff --word-diff` | Word-level diff |
-| `git pl` | `pull --ff-only` | Safe pull (no merge commits) |
-| `git rb` | `rebase` | Rebase |
-| `git rbi` | `rebase --interactive` | Interactive rebase |
-| `git rbo` | `rebase --onto` | Rebase onto |
-| `git rs` | `reset` | Reset |
-| `git rs1` | `reset HEAD~1` | Undo last commit (keep changes) |
-| `git l` | `log --graph --oneline` | Pretty log graph (all branches) |
-| `git ls` | log with dates | Compact log with relative dates |
-| `git la` | log all | Log all local and remote branches |
-| `git ll` | log long | Full commit messages + stats |
-| `git rf` | reflog | Reflog with dates |
-| `git recent` | branch by date | Recently updated branches |
-| `git undo` | `reset --soft HEAD^` | Undo last commit |
-| `git amend` | `commit --amend --no-edit` | Amend without editing message |
-| `git alias` | - | List all git aliases |
+| `g s` | `status --short` | Compact status |
+| `g st` | `status` | Full status |
+| `g co` | `checkout` | Checkout |
+| `g br` | `branch` | Branch |
+| `g ci` | `commit --verbose` | Commit with diff preview |
+| `g ap` | `add --patch` | Stage hunks interactively |
+| `g au` | `add --update` | Stage tracked files |
+| `g d` | `diff` | Diff with color |
+| `g wd` | `diff --word-diff` | Word-level diff |
+| `g pl` | `pull --ff-only` | Safe pull (no merge commits) |
+| `g rb` | `rebase` | Rebase |
+| `g rbi` | `rebase --interactive` | Interactive rebase |
+| `g rbo` | `rebase --onto` | Rebase onto |
+| `g rs` | `reset` | Reset |
+| `g rs1` | `reset HEAD~1` | Undo last commit (keep changes) |
+| `g l` | `log --graph --oneline` | Pretty log graph (all branches) |
+| `g ls` | log with dates | Compact log with relative dates |
+| `g la` | log all | Log all local and remote branches |
+| `g ll` | log long | Full commit messages + stats |
+| `g rf` | reflog | Reflog with dates |
+| `g recent` | branch by date | Recently updated branches |
+| `g undo` | `reset --soft HEAD^` | Undo last commit |
+| `g amend` | `commit --amend --no-edit` | Amend without editing message |
+| `g alias` | - | List all git aliases |
 
 ### Interactive FZF Commands ([forgit](https://github.com/wfxr/forgit))
 
@@ -155,10 +155,3 @@ Two patterns: `git <alias>` for standard commands, short aliases for fzf-powered
 **Forgit keybindings:** `Enter` confirm, `Tab` toggle selection, `?` toggle preview, `Ctrl-Y` copy hash.
 
 Personal config stored in `.gitconfig.local` (not tracked).
-
-## Testing
-
-```bash
-docker build -t dotfiles-test .
-docker run -it dotfiles-test
-```
