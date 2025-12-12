@@ -15,7 +15,7 @@
 # =============================================================================
 # Symlinks
 # =============================================================================
-- clean: ['~', '~/.config/nvim']
+- clean: ['~', '~/.config/nvim', '~/.config/Code/User']
 
 - link:
     # Neovim configuration
@@ -32,6 +32,10 @@
 
     # Starship prompt configuration
     ~/.config/starship.toml: starship.toml
+
+    # VS Code configuration
+    ~/.config/Code/User/settings.json: vscode/settings.json
+    ~/.config/Code/User/keybindings.json: vscode/keybindings.json
 
 - create:
     - ~/.vim/undo-history
@@ -80,7 +84,7 @@
       #- [source ~/.zshrc && ./install_tmux.sh, Install tmux] # TODO: Installing plugins currently not working...
 
 # =============================================================================
-# Nneovim
+# Neovim
 # =============================================================================
 - shell:
     - [bash setup_nvim.sh, setup neovim]

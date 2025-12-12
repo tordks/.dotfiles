@@ -1,0 +1,119 @@
+{
+    "workbench.colorTheme": "Atom One Dark",
+    "terminal.integrated.profiles.linux": {
+      "zsh": {
+          "path": "zsh"
+      },
+      "tmux": {
+          "path": "tmux",
+          "args": ["new-session", "-A", "-s", "main"],
+          "icon": "terminal-tmux",
+          "overrideName": true,
+          "env": {
+              "TERM_PROGRAM": ""
+          }
+      }
+    },
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "Ubuntu (WSL)": {
+            "path": "C:\\Windows\\System32\\wsl.exe",
+            "args": [
+                "-d",
+                "Ubuntu"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "workbench.iconTheme": "vscode-great-icons",
+    "editor.suggest.preview": true,
+    "editor.formatOnSave": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "notebook.lineNumbers": "on",
+    "vim.sneakReplacesF": true,
+    "vim.sneak": true,
+    "vim.leader": "<space>",
+    "vim.hlsearch": true,
+    "vim.foldfix": true,
+    "vim.useSystemClipboard": true,
+    "vim.visualModeKeyBindings": [
+      {
+        "before": ["<leader>", "c"],
+        "commands": ["editor.action.commentLine"],
+        "when": "editorTextFocus && !editorReadonly"
+      }
+    ],
+    "vim.normalModeKeyBindings": [
+      {
+        "before": ["<leader>", "c"],
+        "commands": ["editor.action.commentLine"],
+        "when": "editorTextFocus && !editorReadonly"
+      }
+    ],
+    "files.autoSave": "afterDelay",
+    "redhat.telemetry.enabled": false,
+    "jupyter.runStartupCommands": [
+        "import os\nos.environ['LD_LIBRARY_PATH']= f'/usr/lib/wsl/lib:{os.environ['LD_LIBRARY_PATH']}'"
+    ],
+    "ruff.lineLength": 120,
+    "ruff.lint.enable": true,
+    "workbench.editorAssociations": {
+        "*.parquet": "parquetViewer.view"
+    },
+    "jupyter.askForKernelRestart": false,
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.accessibilitySupport": "off",
+    "window.zoomLevel": -2,
+    "terminal.integrated.gpuAcceleration": "on",
+    "remote.autoForwardPortsSource": "hybrid",
+    "python.languageServer": "Pylance",
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
+    "python.analysis.typeCheckingMode": "standard",
+    "claudeCode.selectedModel": "default",
+    "claudeCode.useTerminal": true,
+    "claudeCode.preferredLocation": "panel",
+    "terminal.integrated.suggest.cdPath": "off"
+}

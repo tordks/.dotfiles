@@ -89,9 +89,20 @@ Uses [LazyVim](https://www.lazyvim.org) - plugins auto-install on first launch.
 - Check plugin status: `:Lazy`
 - Tmux integration: `C-h/j/k/l` works across tmux panes and vim splits
 
+## VS Code
+
+Settings and keybindings symlinked to `~/.config/Code/User/`.
+
+Extensions are listed in `vscode/extensions.txt`. Install manually:
+```bash
+./vscode/install_extensions.sh
+```
+
 ## Git Commands
 
 Two patterns: `git <alias>` for standard commands, short aliases for fzf-powered interactive commands.
+
+`git` is aliased to `g` for brevity.
 
 ### Standard Git Aliases (`.gitconfig`)
 
